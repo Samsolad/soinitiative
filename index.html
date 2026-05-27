@@ -693,20 +693,15 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
     <div class="modal-body">
       <div class="modal-option">
         <span class="modal-opt-label">Pay by Card — Stripe</span>
-        <a id="stripe-link" href="YOUR_STRIPE_PAYMENT_LINK_HERE" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+        <a id="stripe-link" href="https://buy.stripe.com/4gMcN70jTgz9f6fbqt9IQ07" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
           <button class="btn-stripe">&#8594;&nbsp; Give via Stripe (Card Payment)</button>
         </a>
       </div>
       <div class="modal-option">
-        <span class="modal-opt-label">Bank Transfer</span>
-        <div class="bank-details">
-          <div class="bank-row"><span class="bank-key">Account Name</span><span class="bank-val">PLACEHOLDER NAME</span></div>
-          <div class="bank-row"><span class="bank-key">Account Number</span><span class="bank-val">PLACEHOLDER 0000000</span></div>
-          <div class="bank-row"><span class="bank-key">Sort Code</span><span class="bank-val">00-00-00</span></div>
-          <div class="bank-row"><span class="bank-key">Bank</span><span class="bank-val">PLACEHOLDER BANK</span></div>
-          <div class="bank-row"><span class="bank-key">Reference</span><span class="bank-val" id="bank-ref">SoInitiative</span></div>
-        </div>
-        <p class="modal-note">Use the reference shown so we can track your contribution. All funds go directly to programme delivery. Thank you for giving.</p>
+        <span class="modal-opt-label">Pay by Card/Bank — Paystack</span>
+        <a id="paystack-link" href="https://paystack.com/buy/soinitiative-bjmwun" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+          <button class="btn-stripe">&#8594;&nbsp; Give via Paystack</button>
+        </a>
       </div>
     </div>
   </div>
@@ -1668,17 +1663,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // ── GIVE MODAL ────────────────────────────────────────────────────────
 const giveCfg = {
-  general:  { title:'Give to SoInitiative',  sub:'Support any programme — allocated where most needed', ref:'SoInitiative' },
-  family:   { title:'Give to So Family',      sub:'Help fund a family meal delivery in Africa',          ref:'SoFamily' },
-  business: { title:'Give to So Business',    sub:'Help fund a free business spotlight',                 ref:'SoBusiness' },
-  wedding:  { title:'Give to So Wedding',     sub:'Help fund a couple\'s dream wedding in Africa',       ref:'SoWedding' },
-  hero:     { title:'Give to So Hero Award',  sub:'Help fund the ₦200,000 monthly cash gifts',    ref:'SoHero' },
+  general:  { title:'Give to SoInitiative',  sub:'Support any programme — allocated where most needed' },
+  family:   { title:'Give to So Family',      sub:'Help fund a family meal delivery in Africa' },
+  business: { title:'Give to So Business',    sub:'Help fund a free business spotlight' },
+  wedding:  { title:'Give to So Wedding',     sub:'Help fund a couple\'s dream wedding in Africa' },
+  hero:     { title:'Give to So Hero Award',  sub:'Help fund the ₦200,000 monthly cash gifts' },
 };
 function openGive(c) {
   const cfg = giveCfg[c] || giveCfg.general;
   document.getElementById('modal-title').textContent = cfg.title;
   document.getElementById('modal-sub').textContent = cfg.sub;
-  document.getElementById('bank-ref').textContent = cfg.ref;
   document.getElementById('give-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }

@@ -4,6 +4,8 @@
  * Deploy as Web App: Execute as Me, Access: Anyone
  * Set Script Property SHEET_SECRET to match Vercel env SHEET_SECRET
  */
+var ALERT_EMAIL = 'hello@sojona.app';
+
 function doPost(e) {
   try {
     if (!e || !e.postData || !e.postData.contents) {
@@ -53,6 +55,10 @@ function handleVote_(ss, data) {
   }
 
   votes.appendRow([new Date(), campaign, nominee, email]);
+  sendAlert_(
+    'SoInitiative Vote Alert',
+    'New vote received.\n\nCampaign: ' + campaign + '\nNominee: ' + nominee + '\nVoter Email: ' + email
+  );
   return json_({ ok: true });
 }
 
@@ -81,6 +87,16 @@ function handleNomination_(ss, data) {
     sanitize_(data.nominator_country, 80)
   ]);
 
+  sendAlert_(
+    'SoInitiative Nomination Alert',
+    'New nomination received.\n\n'
+      + 'Campaign: ' + sanitize_(data.campaign, 40) + '\n'
+      + 'Nominee: ' + sanitize_(data.nominee, 200) + '\n'
+      + 'Country: ' + sanitize_(data.country, 80) + '\n'
+      + 'Nominator: ' + sanitize_(data.nominator_name, 120) + '\n'
+      + 'Nominator Email: ' + sanitize_(data.nominator_email, 254)
+  );
+
   return json_({ ok: true });
 }
 
@@ -104,4 +120,12 @@ function getHeader_(e, name) {
 
 function json_(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
+}
+
+function sendAlert_(subject, body) {
+  try {
+    MailApp.sendEmail(ALERT_EMAIL, subject, body);
+  } catch (err) {
+    // Do not block submissions if email sending fails.
+  }
 }
