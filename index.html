@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-F0kuCZV8qeCHFhvHIdC/5Fuxh1FpN0huJVAXVi1wBDZwj2qBOugCvmZ959nrazXX+nO4zLhNpVK2bzoV8DYiDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -43,6 +43,9 @@
 html{scroll-behavior:smooth}
 body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--black);color:var(--white);line-height:1.6;min-height:100vh}
 body.hiw-open{overflow:hidden}
+
+/* Honeypot — hidden from users, visible to bots */
+.hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}
 
 /* PAGE ROUTING */
 .page{display:none}
@@ -653,6 +656,12 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
 </head>
 <body>
 
+<!-- Honeypot field for bot/spam filtering (leave blank) -->
+<div class="hp-field" aria-hidden="true">
+  <label for="hp-website">Website</label>
+  <input type="text" id="hp-website" tabindex="-1" autocomplete="off">
+</div>
+
 <!-- NAV -->
 <nav>
   <div class="nav-logo" onclick="showPage('home')">
@@ -684,7 +693,7 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
     <div class="modal-body">
       <div class="modal-option">
         <span class="modal-opt-label">Pay by Card — Stripe</span>
-        <a id="stripe-link" href="YOUR_STRIPE_PAYMENT_LINK_HERE" target="_blank" style="text-decoration:none">
+        <a id="stripe-link" href="YOUR_STRIPE_PAYMENT_LINK_HERE" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
           <button class="btn-stripe">&#8594;&nbsp; Give via Stripe (Card Payment)</button>
         </a>
       </div>
@@ -1433,67 +1442,13 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
 
 <script>
 /*
-╔══════════════════════════════════════════════════════════════════════╗
-║              GOOGLE SHEETS — COMPLETE BEFORE LAUNCH                  ║
-╠══════════════════════════════════════════════════════════════════════╣
-║  STEP 1 — Create a Google Sheet with two tabs:                       ║
-║                                                                      ║
-║  Tab 1: "Nominations" — columns:                                     ║
-║  Date | Campaign | Category | Country | Nominee | Role | Org |      ║
-║  Location | What | Story | Link | Duration | Aware | Relationship |  ║
-║  Nominator Name | Nominator Email | Nominator Phone | Nom Country    ║
-║                                                                      ║
-║  Tab 2: "Votes" — columns:                                           ║
-║  Date | Campaign | Nominee | Email                                   ║
-║                                                                      ║
-║  STEP 2 — Go to https://script.google.com → New Project              ║
-║  Paste this function:                                                ║
-║                                                                      ║
-║  function doPost(e) {                                                ║
-║    try {                                                             ║
-║      var ss = SpreadsheetApp.openById('YOUR_SHEET_ID');             ║
-║      var d = JSON.parse(e.postData.contents);                       ║
-║      if (d.type === 'vote') {                                        ║
-║        ss.getSheetByName('Votes').appendRow([                       ║
-║          new Date(),d.campaign,d.nominee,d.email                    ║
-║        ]);                                                           ║
-║      } else {                                                        ║
-║        ss.getSheetByName('Nominations').appendRow([                 ║
-║          new Date(),d.campaign,d.category||'',d.country||'',       ║
-║          d.nominee||'',d.role||'',d.org||'',d.location||'',        ║
-║          d.what||'',d.story||d.reason||'',d.link||'',              ║
-║          d.duration||'',d.aware||'',d.relationship||'',            ║
-║          d.nominator_name||'',d.nominator_email||'',               ║
-║          d.nominator_phone||'',d.nominator_country||''             ║
-║        ]);                                                           ║
-║      }                                                               ║
-║      return ContentService                                           ║
-║        .createTextOutput(JSON.stringify({ok:true}))                 ║
-║        .setMimeType(ContentService.MimeType.JSON);                   ║
-║    } catch(err) {                                                    ║
-║      return ContentService                                           ║
-║        .createTextOutput(JSON.stringify({ok:false}))                ║
-║        .setMimeType(ContentService.MimeType.JSON);                   ║
-║    }                                                                 ║
-║  }                                                                   ║
-║                                                                      ║
-║  STEP 3 — Deploy > New Deployment                                    ║
-║  Type: Web App | Execute as: Me | Access: Anyone                    ║
-║  Copy the URL and paste it as SHEET_URL below                       ║
-║                                                                      ║
-║  STEP 4 — Replace YOUR_STRIPE_PAYMENT_LINK_HERE in the modal        ║
-║  STEP 5 — Replace bank detail placeholders in the modal             ║
-║  STEP 6 — Change assumption: if So Hero has ONE winner (not two),   ║
-║  remove the Campus tab and merge forms into one                      ║
-╚══════════════════════════════════════════════════════════════════════╝
+  Backend setup: see apps-script/Code.gs and .env.example
+  Set SHEET_URL, SHEET_SECRET, and GATE_PASS in Vercel environment variables.
 */
 
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwDVUlWDCeK6rlAP6wQ-OweGzuIiSn1Ut7vTAxZQgrVXmlqmU2vDFweCw6gbVgqv1Y/exec';
-
 // ── COMING SOON GATE ───────────────────────────────────────────────────
-// Change GATE_PASS before launch. Unlock persists for the browser session only.
+// Preview gate password is verified server-side via /api/gate (Vercel env: GATE_PASS).
 const GATED_PAGES = ['sofamily', 'sowedding'];
-const GATE_PASS = 'soinit-preview';
 const GATE_STORAGE_KEY = 'soinit_gate_unlock';
 
 const gateCopy = {
@@ -1557,10 +1512,20 @@ function showGate(p) {
 
 function tryGateBypass() {
   const input = document.getElementById('gate-pass-input');
-  if (!input || input.value !== GATE_PASS) return;
-  unlockGate();
-  input.value = '';
-  showPage(gateTarget);
+  if (!input || !input.value) return;
+  fetch('/api/gate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password: input.value }),
+  })
+    .then(r => r.json().then(data => ({ ok: r.ok, data })))
+    .then(({ ok, data }) => {
+      if (!ok || !data.ok) return;
+      unlockGate();
+      input.value = '';
+      showPage(gateTarget);
+    })
+    .catch(() => {});
 }
 
 // ── ROUTING ──────────────────────────────────────────────────────────
@@ -1707,12 +1672,12 @@ const giveCfg = {
   family:   { title:'Give to So Family',      sub:'Help fund a family meal delivery in Africa',          ref:'SoFamily' },
   business: { title:'Give to So Business',    sub:'Help fund a free business spotlight',                 ref:'SoBusiness' },
   wedding:  { title:'Give to So Wedding',     sub:'Help fund a couple\'s dream wedding in Africa',       ref:'SoWedding' },
-  hero:     { title:'Give to So Hero Award',  sub:'Help fund the &#8358;200,000 monthly cash gifts',    ref:'SoHero' },
+  hero:     { title:'Give to So Hero Award',  sub:'Help fund the ₦200,000 monthly cash gifts',    ref:'SoHero' },
 };
 function openGive(c) {
   const cfg = giveCfg[c] || giveCfg.general;
   document.getElementById('modal-title').textContent = cfg.title;
-  document.getElementById('modal-sub').innerHTML = cfg.sub;
+  document.getElementById('modal-sub').textContent = cfg.sub;
   document.getElementById('bank-ref').textContent = cfg.ref;
   document.getElementById('give-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -1727,7 +1692,27 @@ document.getElementById('give-modal').addEventListener('click', function(e) {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeGive(); });
 
 // ── FORM SUBMIT ───────────────────────────────────────────────────────
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function v(id) { return (document.getElementById(id)?.value || '').trim(); }
+
+function isValidEmail(email) {
+  return EMAIL_RE.test(email) && email.length <= 254;
+}
+
+async function postJson(url, payload) {
+  const resp = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  let data = {};
+  try { data = await resp.json(); } catch {}
+  if (!resp.ok || data.ok === false) {
+    throw new Error(data.error || 'Request failed');
+  }
+  return data;
+}
 
 async function submitForm(campaign) {
   let data = {}, btnId, sucId;
@@ -1737,6 +1722,7 @@ async function submitForm(campaign) {
           reason=v('sf-reason'),nomName=v('sf-nom-name'),nomEmail=v('sf-nom-email'),nomCountry=v('sf-nom-country'),
           consent=document.getElementById('sf-consent').checked;
     if (!name||!country||!loc||!reason||!nomName||!nomEmail){alert('Please fill in all required fields.');return}
+    if (!isValidEmail(nomEmail)){alert('Please enter a valid email address.');return}
     if (!consent){alert('Please tick the consent checkbox.');return}
     data={campaign:'So Family',country,nominee:name,location:loc,reason,nominator_name:nomName,nominator_email:nomEmail,nominator_country:nomCountry};
     btnId='sf-btn';sucId='sf-success';
@@ -1747,6 +1733,7 @@ async function submitForm(campaign) {
           nomEmail=v('sb-nom-email'),nomCountry=v('sb-nom-country'),
           consent=document.getElementById('sb-consent').checked;
     if (!bizName||!country||!what||!reason||!nomName||!nomEmail){alert('Please fill in all required fields.');return}
+    if (!isValidEmail(nomEmail)){alert('Please enter a valid email address.');return}
     if (!consent){alert('Please tick the consent checkbox.');return}
     data={campaign:'So Business',country,nominee:bizName,what,link,reason,nominator_name:nomName,nominator_email:nomEmail,nominator_country:nomCountry};
     btnId='sb-btn';sucId='sb-success';
@@ -1757,6 +1744,7 @@ async function submitForm(campaign) {
           nomName=v('sw-nom-name'),nomEmail=v('sw-nom-email'),nomPhone=v('sw-nom-phone'),
           consent=document.getElementById('sw-consent').checked;
     if (!couple||!country||!loc||!duration||!story||!aware||!nomName||!nomEmail){alert('Please fill in all required fields.');return}
+    if (!isValidEmail(nomEmail)){alert('Please enter a valid email address.');return}
     if (!consent){alert('Please tick the consent checkbox.');return}
     data={campaign:'So Wedding',country,nominee:couple,location:loc,duration,story,aware,nominator_name:nomName,nominator_email:nomEmail,nominator_phone:nomPhone};
     btnId='sw-btn';sucId='sw-success';
@@ -1767,58 +1755,52 @@ async function submitForm(campaign) {
           aware=v('sh-aware'),yourName=v('sh-your-name'),yourEmail=v('sh-your-email'),
           relationship=v('sh-relationship'),consent=document.getElementById('sh-consent').checked;
     if (!category||!nomineeName||!role||!org||!country||!reason||!aware||!yourName||!yourEmail||!relationship){alert('Please fill in all required fields.');return}
+    if (!isValidEmail(yourEmail)){alert('Please enter a valid email address.');return}
     if (!consent){alert('Please tick the consent checkbox.');return}
     data={campaign:'So Hero',category,nominee:nomineeName,role,org,country,reason,aware,relationship,nominator_name:yourName,nominator_email:yourEmail};
     btnId='sh-btn';sucId='sh-success';
   }
+
+  data.website = v('hp-website');
 
   const btn = document.getElementById(btnId);
   btn.textContent = 'Submitting...';
   btn.disabled = true;
 
   try {
-    if (SHEET_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
-      await new Promise(r => setTimeout(r, 800));
-    } else {
-      await fetch(SHEET_URL, {method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    }
+    await postJson('/api/submit', data);
     btn.style.display = 'none';
     const suc = document.getElementById(sucId);
     suc.style.display = 'block';
     suc.scrollIntoView({behavior:'smooth',block:'center'});
-  } catch {
+  } catch (err) {
     btn.textContent = 'Submit Nomination →';
     btn.disabled = false;
-    alert('Something went wrong. Please try again or email hello@soinitiative.org');
+    alert(err.message || 'Something went wrong. Please try again or email hello@soinitiative.org');
   }
 }
 
 // ── VOTING ─────────────────────────────────────────────────────────────
 async function castVote(btn, nomineeName, campaign) {
   const email = prompt('Enter your email to verify your vote (one vote per person):');
-  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
-  const data = { type:'vote', campaign, nominee:nomineeName, email };
+  if (!email || !isValidEmail(email.trim())) { alert('Please enter a valid email address.'); return; }
+  const data = { type:'vote', campaign, nominee:nomineeName, email: email.trim(), website: v('hp-website') };
   btn.textContent = 'Recording...';
   btn.disabled = true;
   const successId = campaign === 'sowedding' ? 'sw-vote-success' : 'sh-vote-success';
   const votedClass = campaign === 'sowedding' ? 'voted-rose' : 'voted-card';
   try {
-    if (SHEET_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
-      await new Promise(r => setTimeout(r, 700));
-    } else {
-      await fetch(SHEET_URL, {method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    }
-    btn.textContent = '&#10003; Voted';
-    btn.innerHTML = '&#10003; Voted';
+    await postJson('/api/vote', data);
+    btn.textContent = '✓ Voted';
     btn.classList.add('voted-state');
     btn.closest('.nominee-card').classList.add(votedClass);
     const suc = document.getElementById(successId);
     suc.style.display = 'block';
     suc.scrollIntoView({behavior:'smooth',block:'center'});
-  } catch {
-    btn.textContent = 'Vote for This Person';
+  } catch (err) {
+    btn.textContent = campaign === 'sowedding' ? 'Vote for This Couple' : 'Vote for This Person';
     btn.disabled = false;
-    alert('Something went wrong. Please try again.');
+    alert(err.message || 'Something went wrong. Please try again.');
   }
 }
 
