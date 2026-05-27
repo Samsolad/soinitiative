@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoInitiative — Africa Giving Back to Africa</title>
+<meta name="description" content="Four community programmes. Nominate a family, a business, a couple, or a deserving person at work or campus. Anyone can nominate. Anyone can give.">
+<meta property="og:title" content="SoInitiative — Africa Giving Back to Africa">
+<meta property="og:description" content="Nominate. Vote. Give. Africa giving back to Africa.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --black:#080808;
+  --off-black:#111111;
+  --white:#f4f2ed;
+  --dim:rgba(244,242,237,0.5);
+  --dimmer:rgba(244,242,237,0.18);
+  --border:rgba(244,242,237,0.09);
+  --green:#4ade80;
+  --green-dim:rgba(74,222,128,0.15);
+  --green-border:rgba(74,222,128,0.3);
+  --gold:#C9922A;
+  --gold-dim:rgba(201,146,42,0.15);
+  --gold-border:rgba(201,146,42,0.3);
+  --blue:#4A90D9;
+  --blue-dim:rgba(74,144,217,0.15);
+  --blue-border:rgba(74,144,217,0.3);
+  --rose:#D97B8A;
+  --rose-dim:rgba(217,123,138,0.15);
+  --rose-border:rgba(217,123,138,0.3);
+  --amber:#F59E0B;
+  --amber-dim:rgba(245,158,11,0.15);
+  --amber-border:rgba(245,158,11,0.3);
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--black);color:var(--white);line-height:1.6;min-height:100vh}
+body.hiw-open{overflow:hidden}
+
+/* PAGE ROUTING */
+.page{display:none}
+.page.active{display:block}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:300;
+  background:#f4f2ed;
+  border-bottom:1px solid rgba(8,8,8,0.08);
+  padding:0 60px;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{cursor:pointer}
+.nav-logo-word{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-weight:900;
+  color:#080808;letter-spacing:-0.01em;
+}
+.nav-logo-word em{font-style:italic;font-weight:400;color:#1B4D35}
+.nav-right{display:flex;align-items:center;gap:2rem}
+.nav-links{display:flex;gap:1.75rem;list-style:none;align-items:center}
+.nav-links a{
+  font-family:'DM Sans',sans-serif;
+  font-size:11px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(8,8,8,0.6);text-decoration:none;cursor:pointer;
+  transition:color .2s;padding-bottom:2px;border-bottom:1px solid transparent;
+}
+.nav-links a:hover{color:#080808}
+.nav-links a.active{color:#080808;border-bottom-color:#080808}
+.nav-give{
+  font-family:'DM Sans',sans-serif;
+  font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;
+  padding:10px 22px;background:#080808;color:#f4f2ed;
+  border:none;cursor:pointer;transition:opacity .2s,transform .2s;
+}
+.nav-give:hover{opacity:.85;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:20px;height:1.5px;background:#080808}
+
+/* SHARED */
+.section-label{
+  font-family:'DM Sans',sans-serif;font-size:10px;font-weight:400;
+  letter-spacing:0.4em;text-transform:uppercase;color:var(--dimmer);
+  margin-bottom:14px;display:block;
+}
+.divider{width:36px;height:1px;background:rgba(244,242,237,0.22);margin-bottom:36px}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(36px,5vw,68px);font-weight:700;line-height:1.05;color:var(--white);
+}
+.section-title em{font-style:italic;font-weight:400}
+
+/* HOME HERO */
+.home-hero{
+  min-height:94vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:120px 60px 80px;
+  position:relative;overflow:hidden;background:var(--black);
+}
+.home-hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 15% 55%,rgba(74,222,128,0.04) 0%,transparent 55%),
+             radial-gradient(ellipse at 85% 25%,rgba(201,146,42,0.04) 0%,transparent 55%),
+             radial-gradient(ellipse at 50% 85%,rgba(217,123,138,0.03) 0%,transparent 50%);
+  pointer-events:none;
+}
+.home-hero::after{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(244,242,237,0.02) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(244,242,237,0.02) 1px,transparent 1px);
+  background-size:80px 80px;pointer-events:none;
+}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{
+  font-family:'DM Sans',sans-serif;font-size:10px;font-weight:400;
+  letter-spacing:0.4em;text-transform:uppercase;color:var(--green);
+  margin-bottom:2rem;display:inline-flex;align-items:center;gap:0.6rem;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:20px;height:1px;background:var(--green)}
+.hero-hl{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(52px,9vw,120px);font-weight:900;line-height:0.95;
+  color:var(--white);margin-bottom:1.5rem;letter-spacing:-0.01em;
+}
+.hero-hl em{font-style:italic;font-weight:400;color:var(--green)}
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(17px,2.2vw,22px);font-weight:300;font-style:italic;
+  color:var(--dim);max-width:540px;margin:0 auto 3rem;
+  line-height:1.75;letter-spacing:0.02em;
+}
+.hero-cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* BUTTONS */
+.btn-p{
+  font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:0.18em;text-transform:uppercase;padding:13px 36px;
+  background:var(--white);color:var(--black);border:none;cursor:pointer;
+  transition:transform .3s,box-shadow .3s;
+}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(244,242,237,0.18)}
+.btn-s{
+  font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:0.18em;text-transform:uppercase;padding:13px 36px;
+  background:transparent;color:var(--white);border:1px solid var(--dimmer);cursor:pointer;
+  transition:border-color .3s,background .3s;
+}
+.btn-s:hover{border-color:var(--white);background:rgba(244,242,237,0.05)}
+.btn-give-accent{
+  font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:0.18em;text-transform:uppercase;padding:13px 36px;
+  background:var(--green-dim);color:var(--green);
+  border:1px solid var(--green-border);cursor:pointer;
+  transition:background .3s,border-color .3s;
+}
+.btn-give-accent:hover{background:rgba(74,222,128,0.25);border-color:var(--green)}
+
+/* CAMPAIGNS GRID */
+.campaigns-home{padding:120px 60px;background:var(--off-black);border-top:1px solid var(--border)}
+.campaigns-inner{max-width:1240px;margin:0 auto}
+.campaigns-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:3rem}
+.campaign-card{
+  background:rgba(244,242,237,0.03);border:1px solid var(--border);
+  padding:44px 32px;cursor:pointer;transition:background .4s;
+  position:relative;overflow:hidden;min-height:440px;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.campaign-card:hover{background:rgba(244,242,237,0.06)}
+.campaign-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  transform:scaleX(0);transition:transform .4s ease;transform-origin:left;
+}
+.campaign-card:hover::before{transform:scaleX(1)}
+.campaign-card.family::before{background:var(--green)}
+.campaign-card.business::before{background:var(--blue)}
+.campaign-card.wedding::before{background:var(--rose)}
+.campaign-card.hero::before{background:var(--amber)}
+.c-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:0.3em;color:var(--dimmer);margin-bottom:2rem}
+.c-icon{font-size:2rem;margin-bottom:1rem}
+.c-name{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;line-height:1.05;margin-bottom:0.9rem;color:var(--white)}
+.c-name em{font-style:italic;font-weight:400}
+.c-desc{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;line-height:1.65;color:var(--dim);flex:1;margin-bottom:1.75rem}
+.c-actions{display:flex;gap:0.6rem;flex-wrap:wrap}
+.c-nom{
+  font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;
+  letter-spacing:0.18em;text-transform:uppercase;padding:10px 16px;
+  background:transparent;color:var(--white);border:1px solid var(--dimmer);cursor:pointer;
+  transition:border-color .3s,background .3s;
+}
+.c-nom:hover{border-color:var(--white);background:rgba(244,242,237,0.05)}
+.c-give-btn{
+  font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;
+  letter-spacing:0.18em;text-transform:uppercase;padding:10px 16px;
+  border:none;cursor:pointer;transition:opacity .2s;
+}
+.c-give-btn:hover{opacity:.8}
+.c-give-btn.gv{background:var(--green-dim);color:var(--green);border:1px solid var(--green-border)}
+.c-give-btn.bv{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border)}
+.c-give-btn.rv{background:var(--rose-dim);color:var(--rose);border:1px solid var(--rose-border)}
+.c-give-btn.av{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border)}
+
+/* HOW IT WORKS */
+.how-section{padding:120px 60px;background:var(--black);border-top:1px solid var(--border)}
+.how-inner{max-width:1240px;margin:0 auto}
+.steps-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:3rem;position:relative}
+.steps-row::before{content:'';position:absolute;top:20px;left:10%;right:10%;height:1px;background:var(--border)}
+.step-item{padding-right:1.5rem;position:relative}
+.step-dot{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;
+  margin-bottom:1.5rem;position:relative;z-index:1;
+  border:1px solid var(--dimmer);color:var(--dimmer);background:var(--black);
+}
+.step-dot.lit{border-color:var(--green);color:var(--green);background:var(--green-dim)}
+.step-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:0.5rem}
+.step-copy{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:var(--dim);line-height:1.65}
+
+/* WHO SECTION */
+.who-section{padding:120px 60px;background:var(--off-black);border-top:1px solid var(--border)}
+.who-inner{max-width:1240px;margin:0 auto}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:3rem}
+.who-card{background:rgba(244,242,237,0.03);border:1px solid var(--border);padding:44px 36px}
+.who-icon{font-size:1.8rem;margin-bottom:1.25rem}
+.who-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.75rem}
+.who-desc{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:var(--dim);line-height:1.65}
+
+/* GIVE BAND */
+.give-band{padding:120px 60px;background:var(--black);border-top:1px solid var(--border);text-align:center}
+.give-band-inner{max-width:680px;margin:0 auto}
+.give-band-title{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,68px);font-weight:700;line-height:1.05;color:var(--white);margin-bottom:1.5rem}
+.give-band-title em{font-style:italic;font-weight:400}
+.give-band-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.2vw,22px);font-weight:300;font-style:italic;color:var(--dim);line-height:1.75;margin-bottom:3rem}
+.give-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* GIVE MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(8,8,8,0.93);z-index:500;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--off-black);border:1px solid var(--border);width:100%;max-width:520px;position:relative;animation:fadeUp .3s ease both}
+.modal-header{padding:32px 36px 24px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border)}
+.modal-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--white)}
+.modal-sub{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:300;color:var(--dim);margin-top:4px;letter-spacing:0.05em;max-width:340px;line-height:1.5}
+.modal-close{background:none;border:none;cursor:pointer;color:var(--dim);font-size:1.3rem;padding:0;line-height:1;transition:color .2s;flex-shrink:0;margin-left:1rem}
+.modal-close:hover{color:var(--white)}
+.modal-body{padding:32px 36px}
+.modal-opt-label{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;color:var(--dimmer);margin-bottom:12px;display:block}
+.modal-option{margin-bottom:28px}
+.modal-option:last-child{margin-bottom:0}
+.btn-stripe{
+  width:100%;padding:14px 24px;background:var(--white);color:var(--black);
+  font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:0.18em;text-transform:uppercase;border:none;cursor:pointer;
+  transition:transform .2s,box-shadow .2s;
+  display:flex;align-items:center;justify-content:center;gap:0.5rem;
+  text-decoration:none;
+}
+.btn-stripe:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(244,242,237,0.12)}
+.bank-details{background:rgba(244,242,237,0.03);border:1px solid var(--border)}
+.bank-row{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border)}
+.bank-row:last-child{border-bottom:none}
+.bank-key{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--dimmer)}
+.bank-val{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--white)}
+.modal-note{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:300;color:var(--dimmer);line-height:1.65;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+
+/* CAMPAIGN PAGE HERO */
+.cp-hero{padding:120px 60px 100px;background:var(--black);position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.cp-hero::after{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:rgba(244,242,237,0.02);pointer-events:none}
+.cp-hero-inner{max-width:900px;position:relative;z-index:1}
+.back-btn{
+  font-family:'DM Sans',sans-serif;font-size:10px;font-weight:400;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--dimmer);
+  cursor:pointer;border:none;background:none;
+  margin-bottom:3rem;display:inline-flex;align-items:center;gap:0.5rem;
+  transition:color .2s;padding:0;
+}
+.back-btn:hover{color:var(--white)}
+.cp-eyebrow{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:400;letter-spacing:0.4em;text-transform:uppercase;color:var(--dimmer);margin-bottom:1.5rem;display:block}
+.cp-title{font-family:'Playfair Display',serif;font-size:clamp(52px,9vw,110px);font-weight:900;line-height:0.92;color:var(--white);margin-bottom:1.5rem;letter-spacing:-0.01em}
+.cp-title em{font-style:italic;font-weight:400}
+.cp-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.2vw,22px);font-weight:300;font-style:italic;color:var(--dim);max-width:600px;line-height:1.75;letter-spacing:0.02em;margin-bottom:2.5rem}
+.cp-hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* CONTENT */
+.cp-content{padding:120px 60px;background:var(--off-black);border-top:1px solid var(--border)}
+.cp-content-inner{max-width:760px;margin:0 auto}
+.cp-content h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.1;color:var(--white);margin-bottom:2rem}
+.cp-content h2 em{font-style:italic;font-weight:400}
+.cp-content p{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;color:var(--dim);line-height:1.9;margin-bottom:1.4rem}
+.cp-content p strong{font-weight:600;color:var(--white)}
+
+/* STEPS */
+.cp-steps{padding:120px 60px;background:var(--black);border-top:1px solid var(--border)}
+.cp-steps-inner{max-width:760px;margin:0 auto}
+.cp-steps h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.1;color:var(--white);margin-bottom:3rem}
+.cp-step{display:flex;gap:2.5rem;padding-bottom:3rem;margin-bottom:3rem;border-bottom:1px solid var(--border)}
+.cp-step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.cp-step-num{flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:0.02em;color:var(--dimmer);line-height:1;padding-top:4px}
+.cp-step h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:0.6rem}
+.cp-step p{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:var(--dim);line-height:1.7}
+
+/* FORM */
+.form-section{padding:120px 60px;background:var(--off-black);border-top:1px solid var(--border)}
+.form-inner{max-width:640px;margin:0 auto}
+.form-inner h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.1;color:var(--white);margin-bottom:0.75rem}
+.form-lead{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;font-style:italic;color:var(--dim);margin-bottom:3rem;line-height:1.7}
+.form-group{margin-bottom:2rem}
+.form-group label{display:block;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;color:var(--dimmer);margin-bottom:8px}
+.field-hint{display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:300;color:rgba(244,242,237,0.28);letter-spacing:0;text-transform:none;margin-bottom:8px}
+.form-control{
+  width:100%;padding:14px 16px;
+  font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;
+  background:rgba(244,242,237,0.04);border:1px solid var(--border);
+  color:var(--white);outline:none;transition:border-color .2s;
+  appearance:none;border-radius:0;
+}
+.form-control::placeholder{color:var(--dimmer)}
+.form-control:focus{border-color:var(--dimmer)}
+textarea.form-control{min-height:120px;resize:vertical}
+select.form-control option{background:#1a1a1a;color:var(--white)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.form-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0 1rem}
+.divider-label{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;color:var(--dimmer);margin-bottom:2rem;display:block}
+.opt-label{text-transform:none;letter-spacing:0;font-weight:300;font-size:9px}
+.consent-wrap{display:flex;align-items:flex-start;gap:0.75rem;cursor:pointer}
+.consent-wrap input[type=checkbox]{margin-top:4px;flex-shrink:0;accent-color:var(--green)}
+.consent-copy{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:var(--dimmer);line-height:1.6;text-transform:none;letter-spacing:0;font-style:normal}
+.btn-submit{
+  width:100%;padding:16px 24px;margin-top:1.5rem;
+  font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;
+  background:var(--white);color:var(--black);border:none;cursor:pointer;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-submit:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(244,242,237,0.12)}
+.btn-submit:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.form-success{display:none;padding:2.5rem;background:var(--green-dim);border:1px solid var(--green-border);text-align:center;margin-top:1.5rem}
+.form-success h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--green);margin-bottom:0.5rem}
+.form-success p{font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(74,222,128,0.8);line-height:1.6}
+
+/* VOTE TABS (So Hero) */
+.vote-tabs-section{padding:120px 60px;background:var(--off-black);border-top:1px solid var(--border)}
+.vote-tabs-inner{max-width:1200px;margin:0 auto}
+.tab-nav{display:flex;gap:2px;margin-top:2.5rem;margin-bottom:0}
+.tab-btn{
+  font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:0.18em;text-transform:uppercase;padding:14px 28px;
+  background:rgba(244,242,237,0.04);color:var(--dim);
+  border:1px solid var(--border);border-bottom:none;cursor:pointer;
+  transition:all .2s;
+}
+.tab-btn.active{background:var(--black);color:var(--white);border-color:var(--dimmer)}
+.tab-panel{display:none;background:var(--black);border:1px solid var(--border);padding:60px 52px}
+.tab-panel.active{display:block}
+
+/* VOTE SECTION (weddings and hero) */
+.vote-section{padding:120px 60px;background:var(--off-black);border-top:1px solid var(--border)}
+.vote-inner{max-width:1200px;margin:0 auto}
+.vote-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
+.vote-note{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:var(--dimmer);line-height:1.65;max-width:280px;text-align:right}
+.nominees-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.nominee-card{
+  background:rgba(244,242,237,0.03);border:1px solid var(--border);
+  padding:36px 28px;position:relative;overflow:hidden;transition:background .3s;
+}
+.nominee-card:hover{background:rgba(244,242,237,0.05)}
+.nominee-card.voted-card{border-color:var(--amber-border);background:var(--amber-dim)}
+.nominee-card.voted-rose{border-color:var(--rose-border);background:var(--rose-dim)}
+.nominee-num{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:0.02em;color:var(--border);margin-bottom:1rem;line-height:1}
+.nominee-name{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--white);margin-bottom:0.4rem}
+.nominee-location{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--dimmer);margin-bottom:1rem}
+.nominee-story{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:var(--dim);line-height:1.65;margin-bottom:1.5rem}
+.btn-vote{
+  width:100%;padding:12px;font-family:'DM Sans',sans-serif;
+  font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;
+  background:transparent;border:1px solid var(--dimmer);color:var(--dimmer);
+  cursor:pointer;transition:all .2s;
+}
+.btn-vote.amber{border-color:var(--amber-border);color:var(--amber)}
+.btn-vote.rose{border-color:var(--rose-border);color:var(--rose)}
+.btn-vote.amber:hover{background:var(--amber-dim);border-color:var(--amber)}
+.btn-vote.rose:hover{background:var(--rose-dim);border-color:var(--rose)}
+.btn-vote:disabled{opacity:.4;cursor:not-allowed}
+.vote-placeholder{
+  background:rgba(244,242,237,0.02);border:1px dashed var(--border);
+  padding:60px 36px;text-align:center;grid-column:span 3;
+}
+.vote-placeholder p{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;font-style:italic;color:var(--dimmer)}
+.vote-success{display:none;background:var(--green-dim);border:1px solid var(--green-border);padding:1.25rem 2rem;margin-top:1.5rem;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--green);text-align:center}
+
+/* E-FLIER */
+.flier-section{padding:120px 60px;background:var(--black);border-top:1px solid var(--border)}
+.flier-section-inner{max-width:1100px;margin:0 auto}
+.flier-section h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:700;color:var(--white);margin-bottom:0.75rem}
+.flier-lead{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;font-style:italic;color:var(--dim);margin-bottom:3rem;line-height:1.7}
+.flier-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.flier-card{width:100%;aspect-ratio:1/1;padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.flier-card.fc-family{background:#1B4D35}
+.flier-card.fc-business{background:#0D2B5E}
+.flier-card.fc-wedding{background:#3D1A24}
+.flier-card.fc-hero{background:#3D2C08}
+.flier-card::before{content:'';position:absolute;top:-40px;right:-40px;width:220px;height:220px;border-radius:50%;background:rgba(244,242,237,0.05);pointer-events:none}
+.flier-card::after{content:'';position:absolute;bottom:-60px;left:-60px;width:200px;height:200px;border-radius:50%;background:rgba(244,242,237,0.03);pointer-events:none}
+.f-top{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:1}
+.f-brand{font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(244,242,237,0.4)}
+.f-num{font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,242,237,0.25)}
+.f-mid{flex:1;display:flex;flex-direction:column;justify-content:center;padding:1.5rem 0;position:relative;z-index:1}
+.f-eyebrow{font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(244,242,237,0.4);margin-bottom:0.65rem}
+.f-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,9vw,5rem);font-weight:900;line-height:0.92;color:#f4f2ed;margin-bottom:0.9rem}
+.f-title em{font-style:italic;font-weight:400}
+.f-tagline{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:rgba(244,242,237,0.72);line-height:1.6}
+.f-bot{display:flex;justify-content:space-between;align-items:flex-end;position:relative;z-index:1}
+.f-cta{font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;color:#f4f2ed}
+.f-url{font-family:'DM Sans',sans-serif;font-size:8px;color:rgba(244,242,237,0.3);letter-spacing:0.05em}
+.flier-actions h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:0.6rem}
+.flier-actions-desc{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:var(--dim);line-height:1.65;margin-bottom:2rem}
+.action-stack{display:flex;flex-direction:column;gap:0.75rem}
+.btn-action{
+  display:flex;align-items:center;gap:0.75rem;padding:13px 20px;
+  font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;border:none;
+  transition:all .2s;text-align:left;width:100%;
+}
+.btn-action.dl{background:var(--white);color:var(--black)}
+.btn-action.dl:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(244,242,237,0.12)}
+.btn-action.sec{background:rgba(244,242,237,0.05);color:var(--white);border:1px solid var(--border)}
+.btn-action.sec:hover{background:rgba(244,242,237,0.09);border-color:var(--dimmer)}
+.copy-flash{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--green);display:none;padding-left:4px}
+.share-tips{margin-top:1.5rem;padding:20px 24px;background:rgba(244,242,237,0.03);border:1px solid var(--border);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:var(--dim);line-height:1.75}
+.share-tips strong{font-weight:500;color:var(--white)}
+
+/* FOOTER */
+footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--border)}
+.footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--white);margin-bottom:0.5rem;letter-spacing:-0.01em}
+.footer-brand em{font-style:italic;font-weight:400;color:var(--green)}
+.footer-tagline{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;font-style:italic;color:var(--dim);line-height:1.7;margin-bottom:1.5rem;max-width:260px}
+.footer-copy{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:300;color:var(--dimmer);letter-spacing:0.05em}
+.footer-col h4{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;color:var(--dimmer);margin-bottom:1.25rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+.footer-col a{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:var(--dim);text-decoration:none;cursor:pointer;transition:color .2s}
+.footer-col a:hover{color:var(--white)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .campaigns-grid{grid-template-columns:repeat(2,1fr)}
+  .nominees-grid{grid-template-columns:repeat(2,1fr)}
+  .nominees-grid .vote-placeholder{grid-column:span 2}
+}
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .who-grid{grid-template-columns:1fr 1fr}
+  .steps-row{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .steps-row::before{display:none}
+  .flier-layout{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .form-row{grid-template-columns:1fr}
+  .home-hero,.campaigns-home,.how-section,.who-section,.give-band,
+  .cp-hero,.cp-content,.cp-steps,.form-section,.vote-section,
+  .vote-tabs-section,.flier-section,footer{padding-left:20px;padding-right:20px}
+  .campaigns-home,.how-section,.who-section,.give-band,.cp-content,
+  .cp-steps,.form-section,.vote-section,.vote-tabs-section,.flier-section,footer{padding-top:72px;padding-bottom:72px}
+  .home-hero{padding:72px 20px 60px}
+  .cp-hero{padding:72px 20px 60px}
+}
+@media(max-width:640px){
+  .nav-links,.nav-give{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:#f4f2ed;border-bottom:1px solid rgba(8,8,8,0.08);padding:1.5rem 20px;gap:1.25rem;z-index:300}
+  .hamburger{display:flex}
+  .campaigns-grid{grid-template-columns:1fr}
+  .nominees-grid{grid-template-columns:1fr}
+  .nominees-grid .vote-placeholder{grid-column:span 1}
+  .who-grid{grid-template-columns:1fr}
+  .steps-row{grid-template-columns:1fr}
+  .hero-cta-row,.cp-hero-btns,.give-buttons{flex-direction:column;align-items:center}
+  .btn-p,.btn-s,.btn-give-accent{width:100%;max-width:300px;text-align:center}
+  .cp-step{flex-direction:column;gap:0.75rem}
+  .footer-inner{grid-template-columns:1fr;gap:2rem}
+  .tab-panel{padding:32px 24px}
+  .modal-header,.modal-body{padding-left:24px;padding-right:24px}
+}
+
+/* COMING SOON GATE */
+.gate-screen{
+  min-height:calc(100vh - 68px);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:80px 60px 100px;position:relative;overflow:hidden;background:var(--black);
+}
+.gate-screen::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+}
+.gate-screen.gate-family::before{
+  background:radial-gradient(ellipse at 30% 60%,rgba(74,222,128,0.06) 0%,transparent 55%);
+}
+.gate-screen.gate-wedding::before{
+  background:radial-gradient(ellipse at 70% 35%,rgba(217,123,138,0.07) 0%,transparent 55%);
+}
+.gate-inner{position:relative;z-index:1;max-width:560px}
+.gate-eyebrow{
+  font-family:'DM Sans',sans-serif;font-size:10px;font-weight:400;
+  letter-spacing:0.4em;text-transform:uppercase;color:var(--dimmer);
+  margin-bottom:1.5rem;display:block;
+}
+.gate-screen.gate-family .gate-eyebrow{color:rgba(74,222,128,0.55)}
+.gate-screen.gate-wedding .gate-eyebrow{color:rgba(217,123,138,0.55)}
+.gate-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(52px,9vw,96px);font-weight:900;line-height:0.95;
+  color:var(--white);margin-bottom:1.25rem;letter-spacing:-0.01em;
+}
+.gate-title em{font-style:italic;font-weight:400}
+.gate-screen.gate-family .gate-title em{color:var(--green)}
+.gate-screen.gate-wedding .gate-title em{color:var(--rose)}
+.gate-lead{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.2vw,22px);
+  font-weight:300;font-style:italic;color:var(--dim);line-height:1.75;
+  margin-bottom:2.5rem;
+}
+.gate-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.gate-admin{
+  position:absolute;bottom:0;left:0;right:0;
+  display:flex;justify-content:center;padding:14px 24px 22px;z-index:2;
+}
+.gate-admin input{
+  width:100px;max-width:36vw;border:none;border-bottom:1px solid rgba(244,242,237,0.07);
+  background:transparent;color:rgba(244,242,237,0.14);
+  font-family:'DM Sans',sans-serif;font-size:9px;font-weight:300;
+  letter-spacing:0.2em;text-align:center;padding:3px 0 5px;outline:none;
+  transition:border-color .2s,color .2s;
+}
+.gate-admin input::placeholder{color:transparent}
+.gate-admin input:focus{
+  border-bottom-color:rgba(244,242,237,0.16);color:rgba(244,242,237,0.32);
+}
+@media(max-width:900px){
+  .gate-screen{padding:72px 20px 88px}
+  .gate-actions{flex-direction:column;align-items:center}
+  .gate-actions .btn-p,.gate-actions .btn-s{width:100%;max-width:300px}
+}
+
+/* HOW IT WORKS — LANDING POPUP */
+.hiw-popup{
+  display:none;position:fixed;inset:0;z-index:450;
+  align-items:center;justify-content:center;padding:20px;
+}
+.hiw-popup.hiw-visible{display:flex}
+.hiw-popup.hiw-visible:not(.minimized){pointer-events:auto}
+.hiw-backdrop{
+  position:absolute;inset:0;background:rgba(8,8,8,0.88);
+  cursor:pointer;
+}
+.hiw-panel{
+  position:relative;z-index:1;width:100%;max-width:560px;max-height:min(88vh,720px);
+  background:var(--off-black);border:1px solid var(--border);
+  display:flex;flex-direction:column;animation:fadeUp .35s ease both;
+  box-shadow:0 24px 80px rgba(0,0,0,0.55);
+}
+.hiw-panel-header{
+  padding:28px 28px 20px;display:flex;align-items:flex-start;justify-content:space-between;
+  gap:1rem;border-bottom:1px solid var(--border);flex-shrink:0;
+}
+.hiw-panel-title{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:700;color:var(--white);line-height:1.1}
+.hiw-panel-title em{font-style:italic;font-weight:400;color:var(--green)}
+.hiw-panel-sub{
+  font-family:'DM Sans',sans-serif;font-size:11px;font-weight:300;color:var(--dim);
+  margin-top:6px;letter-spacing:0.05em;line-height:1.5;
+}
+.hiw-panel-actions{display:flex;gap:6px;flex-shrink:0}
+.hiw-icon-btn{
+  width:36px;height:36px;border:1px solid var(--border);background:transparent;
+  color:var(--dim);cursor:pointer;font-size:1.1rem;line-height:1;
+  display:flex;align-items:center;justify-content:center;transition:color .2s,border-color .2s;
+}
+.hiw-icon-btn:hover{color:var(--white);border-color:rgba(244,242,237,0.25)}
+.hiw-panel-body{padding:24px 28px;overflow-y:auto;flex:1}
+.hiw-steps{list-style:none;display:flex;flex-direction:column;gap:0}
+.hiw-step{
+  display:grid;grid-template-columns:40px 1fr;gap:1rem 1.25rem;
+  padding:18px 0;border-bottom:1px solid var(--border);
+}
+.hiw-step:last-child{border-bottom:none;padding-bottom:0}
+.hiw-step:first-child{padding-top:0}
+.hiw-step-num{
+  width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;
+  border:1px solid var(--dimmer);color:var(--dimmer);background:var(--black);
+}
+.hiw-step-num.lit{border-color:var(--green);color:var(--green);background:var(--green-dim)}
+.hiw-step h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:0.35rem}
+.hiw-step p{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:var(--dim);line-height:1.65}
+.hiw-panel-footer{
+  padding:18px 28px 24px;border-top:1px solid var(--border);
+  display:flex;gap:0.75rem;flex-wrap:wrap;flex-shrink:0;
+}
+.hiw-btn-min{
+  font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.16em;
+  text-transform:uppercase;padding:11px 18px;background:transparent;color:var(--dim);
+  border:1px solid var(--border);cursor:pointer;transition:color .2s,border-color .2s;
+}
+.hiw-btn-min:hover{color:var(--white);border-color:rgba(244,242,237,0.22)}
+.hiw-btn-go{
+  font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.16em;
+  text-transform:uppercase;padding:11px 22px;background:var(--white);color:var(--black);
+  border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;flex:1;min-width:140px;
+}
+.hiw-btn-go:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(244,242,237,0.12)}
+.hiw-visit-note{
+  font-family:'DM Sans',sans-serif;font-size:9px;font-weight:300;letter-spacing:0.12em;
+  color:var(--dimmer);width:100%;text-align:center;margin-top:2px;
+}
+/* Minimized — bottom-right pill */
+.hiw-popup.minimized{
+  display:block;inset:auto;top:auto;left:auto;right:20px;bottom:20px;
+  width:auto;height:auto;padding:0;
+}
+.hiw-popup.minimized .hiw-backdrop{display:none}
+.hiw-popup.minimized .hiw-panel{
+  max-width:none;max-height:none;width:auto;animation:fadeUp .25s ease both;
+  cursor:pointer;border-color:rgba(74,222,128,0.35);
+  box-shadow:0 8px 32px rgba(0,0,0,0.45);
+}
+.hiw-popup.minimized .hiw-panel-header{padding:0;border:none}
+.hiw-popup.minimized .hiw-panel-sub,
+.hiw-popup.minimized .hiw-panel-body,
+.hiw-popup.minimized .hiw-panel-footer,
+.hiw-popup.minimized .hiw-panel-actions{display:none}
+.hiw-popup.minimized .hiw-panel-title{
+  font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;padding:14px 18px;white-space:nowrap;
+}
+.hiw-popup.minimized .hiw-panel-title em{font-style:normal;color:var(--green);font-weight:500}
+@media(max-width:640px){
+  .hiw-popup:not(.minimized){padding:12px;align-items:flex-end}
+  .hiw-panel{max-height:92vh}
+  .hiw-popup.minimized{right:14px;bottom:14px}
+  .hiw-panel-footer{flex-direction:column}
+  .hiw-btn-go{width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">
+    <span class="nav-logo-word"><em>So</em>Initiative</span>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links" id="nav-menu">
+      <li><a id="nav-home"       onclick="showPage('home')"       class="active">Home</a></li>
+      <li><a id="nav-sofamily"   onclick="showPage('sofamily')"             >So Family</a></li>
+      <li><a id="nav-sobusiness" onclick="showPage('sobusiness')"           >So Business</a></li>
+      <li><a id="nav-sowedding"  onclick="showPage('sowedding')"            >So Wedding</a></li>
+      <li><a id="nav-sohero"     onclick="showPage('sohero')"               >So Hero</a></li>
+    </ul>
+    <button class="nav-give" onclick="openGive('general')">&#9825; Give Now</button>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- GIVE MODAL -->
+<div class="modal-overlay" id="give-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <h2 class="modal-title" id="modal-title">Give to SoInitiative</h2>
+        <p class="modal-sub" id="modal-sub">Your contribution goes directly to the community</p>
+      </div>
+      <button class="modal-close" onclick="closeGive()">&#x2715;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-option">
+        <span class="modal-opt-label">Pay by Card — Stripe</span>
+        <a id="stripe-link" href="YOUR_STRIPE_PAYMENT_LINK_HERE" target="_blank" style="text-decoration:none">
+          <button class="btn-stripe">&#8594;&nbsp; Give via Stripe (Card Payment)</button>
+        </a>
+      </div>
+      <div class="modal-option">
+        <span class="modal-opt-label">Bank Transfer</span>
+        <div class="bank-details">
+          <div class="bank-row"><span class="bank-key">Account Name</span><span class="bank-val">PLACEHOLDER NAME</span></div>
+          <div class="bank-row"><span class="bank-key">Account Number</span><span class="bank-val">PLACEHOLDER 0000000</span></div>
+          <div class="bank-row"><span class="bank-key">Sort Code</span><span class="bank-val">00-00-00</span></div>
+          <div class="bank-row"><span class="bank-key">Bank</span><span class="bank-val">PLACEHOLDER BANK</span></div>
+          <div class="bank-row"><span class="bank-key">Reference</span><span class="bank-val" id="bank-ref">SoInitiative</span></div>
+        </div>
+        <p class="modal-note">Use the reference shown so we can track your contribution. All funds go directly to programme delivery. Thank you for giving.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS — LANDING POPUP (first 3 visits) -->
+<div class="hiw-popup" id="hiw-popup" role="dialog" aria-labelledby="hiw-title" aria-hidden="true">
+  <div class="hiw-backdrop" onclick="minimizeHiw()" aria-hidden="true"></div>
+  <div class="hiw-panel" id="hiw-panel">
+    <div class="hiw-panel-header">
+      <div>
+        <h2 class="hiw-panel-title" id="hiw-title">How it <em>works</em></h2>
+        <p class="hiw-panel-sub">One loop. Every programme. Anyone can nominate — anyone can give.</p>
+      </div>
+      <div class="hiw-panel-actions">
+        <button type="button" class="hiw-icon-btn" onclick="minimizeHiw()" title="Minimize" aria-label="Minimize to corner">&#8722;</button>
+      </div>
+    </div>
+    <div class="hiw-panel-body">
+      <ol class="hiw-steps">
+        <li class="hiw-step">
+          <span class="hiw-step-num lit">1</span>
+          <div><h3>Nominate</h3><p>Anyone from anywhere fills in a simple form to nominate a family, business, couple, or deserving person in Africa.</p></div>
+        </li>
+        <li class="hiw-step">
+          <span class="hiw-step-num">2</span>
+          <div><h3>Verify</h3><p>A trusted local coordinator confirms each nomination within 48 hours. Privacy is fully protected at every stage.</p></div>
+        </li>
+        <li class="hiw-step">
+          <span class="hiw-step-num">3</span>
+          <div><h3>Vote or Select</h3><p>For So Wedding and So Hero, the community votes. For So Family and So Business, our team selects from verified nominations.</p></div>
+        </li>
+        <li class="hiw-step">
+          <span class="hiw-step-num">4</span>
+          <div><h3>Deliver</h3><p>A meal. A business launch. A funded wedding. A cash award. Real support, delivered to real people.</p></div>
+        </li>
+        <li class="hiw-step">
+          <span class="hiw-step-num lit">5</span>
+          <div><h3>Share</h3><p>Every episode is filmed and published. Download the e-flier and share it to bring in the next nomination.</p></div>
+        </li>
+      </ol>
+    </div>
+    <div class="hiw-panel-footer">
+      <button type="button" class="hiw-btn-min" onclick="minimizeHiw()">Minimize</button>
+      <button type="button" class="hiw-btn-go" onclick="dismissHiw()">Explore programmes</button>
+      <span class="hiw-visit-note" id="hiw-visit-note"></span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     HOME
+══════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <section class="home-hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Community-Owned &nbsp;·&nbsp; All of Africa</p>
+      <h1 class="hero-hl">Africa giving<br><em>back to Africa.</em></h1>
+      <p class="hero-sub">Four programmes. Real people. Anyone from anywhere in the world can nominate a family, a business, a couple, or a deserving person in Africa — and anyone can give.</p>
+      <div class="hero-cta-row">
+        <button class="btn-p" onclick="showPage('sofamily')">Nominate Someone</button>
+        <button class="btn-s" onclick="showPage('sowedding')">Vote for a Couple</button>
+        <button class="btn-give-accent" onclick="openGive('general')">&#9825;&nbsp; Give Now</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="campaigns-home">
+    <div class="campaigns-inner">
+      <span class="section-label">Our Programmes</span>
+      <h2 class="section-title">Four ways to give<br>back <em>right now.</em></h2>
+      <div class="divider"></div>
+      <div class="campaigns-grid">
+
+        <div class="campaign-card family" onclick="showPage('sofamily')">
+          <div>
+            <p class="c-num">01</p>
+            <div class="c-icon">🏠</div>
+            <h3 class="c-name">So <em>Family</em></h3>
+            <p class="c-desc">Nominate a family in Africa that needs food support. A local restaurant delivers a full meal to their door as a surprise. The genuine moment is filmed and shared.</p>
+          </div>
+          <div class="c-actions">
+            <button class="c-nom" onclick="event.stopPropagation();showPage('sofamily')">Nominate</button>
+            <button class="c-give-btn gv" onclick="event.stopPropagation();openGive('family')">&#9825; Give</button>
+          </div>
+        </div>
+
+        <div class="campaign-card business" onclick="showPage('sobusiness')">
+          <div>
+            <p class="c-num">02</p>
+            <div class="c-icon">🏪</div>
+            <h3 class="c-name">So <em>Business</em></h3>
+            <p class="c-desc">Nominate a small African business with a great product but no marketing budget. We onboard them free, recruit their first ambassadors, and film the journey to their first sale.</p>
+          </div>
+          <div class="c-actions">
+            <button class="c-nom" onclick="event.stopPropagation();showPage('sobusiness')">Nominate</button>
+            <button class="c-give-btn bv" onclick="event.stopPropagation();openGive('business')">&#9825; Give</button>
+          </div>
+        </div>
+
+        <div class="campaign-card wedding" onclick="showPage('sowedding')">
+          <div>
+            <p class="c-num">03</p>
+            <div class="c-icon">&#128141;</div>
+            <h3 class="c-name">So <em>Wedding</em></h3>
+            <p class="c-desc">Nominate a couple who deserve their dream wedding but cannot afford it. The community votes. The winner receives up to &#8358;1,000,000 towards their wedding day.</p>
+          </div>
+          <div class="c-actions">
+            <button class="c-nom" onclick="event.stopPropagation();showPage('sowedding')">Nominate</button>
+            <button class="c-give-btn rv" onclick="event.stopPropagation();openGive('wedding')">&#9825; Give</button>
+          </div>
+        </div>
+
+        <div class="campaign-card hero" onclick="showPage('sohero')">
+          <div>
+            <p class="c-num">04</p>
+            <div class="c-icon">&#127942;</div>
+            <h3 class="c-name">So <em>Hero</em></h3>
+            <p class="c-desc">Nominate the worker or campus leader who deserves recognition. Colleagues vote. The highest votes win a &#8358;200,000 monthly cash gift — one for the workplace, one for campus.</p>
+          </div>
+          <div class="c-actions">
+            <button class="c-nom" onclick="event.stopPropagation();showPage('sohero')">Nominate</button>
+            <button class="c-give-btn av" onclick="event.stopPropagation();openGive('hero')">&#9825; Give</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="how-section">
+    <div class="how-inner">
+      <span class="section-label">The Process</span>
+      <h2 class="section-title">One loop.<br><em>Every programme.</em></h2>
+      <div class="divider"></div>
+      <div class="steps-row">
+        <div class="step-item">
+          <div class="step-dot lit">1</div>
+          <p class="step-title">Nominate</p>
+          <p class="step-copy">Anyone from anywhere in the world fills in a simple form to nominate a family, business, couple, or deserving person in Africa.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">2</div>
+          <p class="step-title">Verify</p>
+          <p class="step-copy">A trusted local coordinator confirms each nomination within 48 hours. Privacy is fully protected at every stage.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">3</div>
+          <p class="step-title">Vote or Select</p>
+          <p class="step-copy">For So Wedding and So Hero, the community votes. For So Family and So Business, our team selects from verified nominations.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">4</div>
+          <p class="step-title">Deliver</p>
+          <p class="step-copy">A meal. A business launch. A funded wedding. A cash award. Real support, delivered to real people.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-dot lit">5</div>
+          <p class="step-title">Share</p>
+          <p class="step-copy">Every episode is filmed and published. Download the e-flier and share it to bring in the next nomination.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="who-section">
+    <div class="who-inner">
+      <span class="section-label">Who Can Nominate?</span>
+      <h2 class="section-title">If you believe in<br>someone — <em>nominate them.</em></h2>
+      <div class="divider"></div>
+      <div class="who-grid">
+        <div class="who-card">
+          <div class="who-icon">&#127757;</div>
+          <h3 class="who-title">From anywhere in Africa</h3>
+          <p class="who-desc">Living in Lagos, Nairobi, Accra, Kampala — anywhere on the continent. You see someone who deserves support. You nominate them.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">&#9992;&#65039;</div>
+          <h3 class="who-title">From the diaspora</h3>
+          <p class="who-desc">You left. But you know families and businesses back home working hard and deserving a spotlight. You can nominate from anywhere.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">&#129309;</div>
+          <h3 class="who-title">From anywhere in the world</h3>
+          <p class="who-desc">You don't have to be African to believe in Africa. If you know someone doing great work — nominate them and/or donate to help them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="give-band">
+    <div class="give-band-inner">
+      <span class="section-label">Give</span>
+      <h2 class="give-band-title">Every contribution<br>changes a <em>life.</em></h2>
+      <p class="give-band-sub">A meal costs less than you think. A business listing changes everything. A wedding is a memory for life. A cash award changes a person's month. Give what you can.</p>
+      <div class="give-buttons">
+        <button class="btn-p" onclick="openGive('general')">&#9825;&nbsp; Give to SoInitiative</button>
+        <button class="btn-s" onclick="openGive('family')">Give to So Family</button>
+        <button class="btn-s" onclick="openGive('business')">Give to So Business</button>
+        <button class="btn-s" onclick="openGive('wedding')">Give to So Wedding</button>
+        <button class="btn-s" onclick="openGive('hero')">Give to So Hero</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div><p class="footer-brand"><em>So</em>Initiative</p><p class="footer-tagline">Africa giving back to Africa — one nomination at a time.</p><p class="footer-copy">Community-owned. Publicly funded. Transparent.</p></div>
+      <div class="footer-col"><h4>Programmes</h4><ul><li><a onclick="showPage('sofamily')">So Family</a></li><li><a onclick="showPage('sobusiness')">So Business</a></li><li><a onclick="showPage('sowedding')">So Wedding</a></li><li><a onclick="showPage('sohero')">So Hero</a></li></ul></div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="openGive('general')">Give Now</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:hello@soinitiative.org">hello@soinitiative.org</a></li></ul></div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     COMING SOON GATE (So Family / So Wedding)
+══════════════════════════════════════ -->
+<div class="page" id="page-gate">
+  <div class="gate-screen gate-family" id="gate-screen">
+    <div class="gate-inner">
+      <button class="back-btn" onclick="showPage('home')">&#8592; Back to SoInitiative</button>
+      <span class="gate-eyebrow" id="gate-eyebrow">Coming Soon</span>
+      <h1 class="gate-title" id="gate-title">So <em>Family</em></h1>
+      <p class="gate-lead" id="gate-lead">We're putting the finishing touches on this programme. Check back soon — or explore So Business and So Hero in the meantime.</p>
+      <div class="gate-actions">
+        <button class="btn-p" type="button" onclick="showPage('home')">Back to Home</button>
+        <button class="btn-s" type="button" id="gate-alt-btn" onclick="showPage('sobusiness')">Explore So Business</button>
+      </div>
+    </div>
+    <div class="gate-admin">
+      <input type="password" id="gate-pass-input" autocomplete="off" spellcheck="false" aria-label="Preview access" onkeydown="if(event.key==='Enter')tryGateBypass()">
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     SO FAMILY
+══════════════════════════════════════ -->
+<div class="page" id="page-sofamily">
+  <div class="cp-hero">
+    <div class="cp-hero-inner">
+      <button class="back-btn" onclick="showPage('home')">&#8592; Back to SoInitiative</button>
+      <span class="cp-eyebrow">Programme 01 &nbsp;·&nbsp; Community Food Support &nbsp;·&nbsp; All of Africa</span>
+      <h1 class="cp-title">So <em>Family</em></h1>
+      <p class="cp-tagline">A community-funded programme that surprises families in need across Africa with a full meal — delivered with care, filmed in the moment, shared so the next family gets nominated too.</p>
+      <div class="cp-hero-btns">
+        <button class="btn-p" onclick="document.getElementById('sf-form').scrollIntoView({behavior:'smooth'})">Nominate a Family</button>
+        <button class="btn-s" onclick="openGive('family')">&#9825;&nbsp; Give to So Family</button>
+      </div>
+    </div>
+  </div>
+  <div class="cp-content">
+    <div class="cp-content-inner">
+      <span class="section-label">What is So Family?</span>
+      <h2>A meal. A moment.<br><em>A movement.</em></h2>
+      <div class="divider"></div>
+      <p>So Family is a community-powered food programme where <strong>anyone from anywhere nominates a family in Africa that needs support.</strong> A local restaurant partner prepares a full family meal. A verified local coordinator delivers it unannounced. The genuine reaction is filmed and shared.</p>
+      <p>This is not charity. <strong>It is the community deciding who deserves care — and acting on it.</strong> Every delivery proves ordinary people can create extraordinary moments.</p>
+      <p><strong>No government money. No NGO gatekeepers.</strong> Just people, giving back.</p>
+    </div>
+  </div>
+  <div class="cp-steps">
+    <div class="cp-steps-inner">
+      <span class="section-label">How It Works</span>
+      <h2>Five steps.<br><em>One family. Real impact.</em></h2>
+      <div class="divider"></div>
+      <div class="cp-step"><div class="cp-step-num">01</div><div><h3>You Nominate</h3><p>Fill in the form below. Tell us who the family is, where they are in Africa, and why they deserve this. You don't need to know them personally.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">02</div><div><h3>We Verify</h3><p>A trusted local coordinator confirms the nomination within 48 hours. The family's privacy is fully protected throughout.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">03</div><div><h3>We Deliver</h3><p>A local restaurant partner prepares a full family meal. Our coordinator delivers it directly to their home. The family doesn't know it's coming.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">04</div><div><h3>We Film</h3><p>The moment is filmed naturally, respectfully, and with full consent. No scripts. No staging. A real family, receiving real care.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">05</div><div><h3>We Share — And You Share</h3><p>The story goes live on YouTube, Instagram, and TikTok. Download the e-flier below and share it. Every share brings us closer to the next family.</p></div></div>
+    </div>
+  </div>
+  <div class="form-section" id="sf-form">
+    <div class="form-inner">
+      <span class="section-label">Nominate</span>
+      <h2>Nominate a Family</h2>
+      <p class="form-lead">Takes less than 3 minutes. All information handled with full care and privacy. Fields marked * are required.</p>
+      <div id="sf-wrap">
+        <div class="form-group"><label>Family name or identifier *</label><span class="field-hint">A first name or brief description is fine — we do not need full names</span><input type="text" id="sf-name" class="form-control" placeholder="e.g. The Eze family, or 'A mother of four in Mushin'" required></div>
+        <div class="form-group"><label>Country *</label><select id="sf-country" class="form-control" required><option value="">Select country...</option><option>Nigeria</option><option>Ghana</option><option>Kenya</option><option>South Africa</option><option>Ethiopia</option><option>Uganda</option><option>Tanzania</option><option>Cameroon</option><option>Senegal</option><option>Côte d'Ivoire</option><option>Zimbabwe</option><option>Rwanda</option><option>Zambia</option><option>Mozambique</option><option>Other</option></select></div>
+        <div class="form-group"><label>City or area *</label><input type="text" id="sf-location" class="form-control" placeholder="e.g. Mushin, Lagos" required></div>
+        <div class="form-group"><label>Why do they deserve this? *</label><span class="field-hint">Be honest and specific — this helps our coordinator verify and prioritise</span><textarea id="sf-reason" class="form-control" placeholder="Tell us about the family, their situation, and why you nominated them..." required></textarea></div>
+        <hr class="form-divider"><span class="divider-label">About you — the nominator</span>
+        <div class="form-row">
+          <div class="form-group"><label>Your name *</label><input type="text" id="sf-nom-name" class="form-control" placeholder="Your full name" required></div>
+          <div class="form-group"><label>Your email *</label><input type="email" id="sf-nom-email" class="form-control" placeholder="you@example.com" required></div>
+        </div>
+        <div class="form-group"><label>Your country <span class="opt-label">(optional)</span></label><input type="text" id="sf-nom-country" class="form-control" placeholder="e.g. Nigeria, UK, USA"></div>
+        <div class="form-group"><label class="consent-wrap"><input type="checkbox" id="sf-consent" required><span class="consent-copy">I confirm this nomination is made in good faith and consent to my name being used in content credits if the family is selected. *</span></label></div>
+        <button class="btn-submit" id="sf-btn" onclick="submitForm('sofamily')">Submit Nomination &#8594;</button>
+        <div class="form-success" id="sf-success"><h3>Nomination Received</h3><p>Thank you. Our team will review your submission within 48 hours. If the family is selected, you will be the first to know.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="flier-section">
+    <div class="flier-section-inner">
+      <span class="section-label">Spread the Word</span>
+      <h2>Download &amp; Share</h2>
+      <div class="divider"></div>
+      <p class="flier-lead">Save the flier and post it on WhatsApp, Instagram Stories, TikTok, or anywhere you show up. Every share brings us closer to the next family.</p>
+      <div class="flier-layout">
+        <div id="sf-flier" class="flier-card fc-family">
+          <div class="f-top"><span class="f-brand">SOINITIATIVE</span><span class="f-num">Programme 01</span></div>
+          <div class="f-mid"><p class="f-eyebrow">Community Food Support · Africa</p><h2 class="f-title">So<br><em>Family</em></h2><p class="f-tagline">Know a family in Africa that deserves a hot meal? Nominate them today. Anyone, anywhere can nominate.</p></div>
+          <div class="f-bot"><span class="f-cta">Nominate Now &#8599;</span><span class="f-url">soinitiative.org</span></div>
+        </div>
+        <div class="flier-actions">
+          <h3>Share So Family</h3>
+          <p class="flier-actions-desc">Download as a PNG to post directly, copy the link to share via message, or use native share on mobile.</p>
+          <div class="action-stack">
+            <button class="btn-action dl" onclick="downloadFlier('sf-flier','SoFamily-SoInitiative')">&#8595;&nbsp; Download Flier (PNG)</button>
+            <button class="btn-action sec" onclick="copyLink('sofamily','sf-flash')">&#128279;&nbsp; Copy Campaign Link</button>
+            <button class="btn-action sec sf-native" onclick="nativeShare('So Family — SoInitiative','Nominate a family in Africa for food support.','#sofamily')">&#8599;&nbsp; Share via WhatsApp / More</button>
+            <p class="copy-flash" id="sf-flash">&#10003; Link copied!</p>
+          </div>
+          <div class="share-tips"><strong>WhatsApp:</strong> Save PNG and share in family or community groups.<br><strong>Instagram Stories:</strong> Post the PNG and add the link in your bio.<br><strong>Twitter / X:</strong> Paste the link for a full preview card automatically.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><div><p class="footer-brand"><em>So</em>Initiative</p><p class="footer-tagline">Africa giving back to Africa — one nomination at a time.</p><p class="footer-copy">Community-owned. Publicly funded. Transparent.</p></div><div class="footer-col"><h4>Programmes</h4><ul><li><a onclick="showPage('sofamily')">So Family</a></li><li><a onclick="showPage('sobusiness')">So Business</a></li><li><a onclick="showPage('sowedding')">So Wedding</a></li><li><a onclick="showPage('sohero')">So Hero</a></li></ul></div><div class="footer-col"><h4>Navigate</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="openGive('family')">Give to So Family</a></li></ul></div><div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:hello@soinitiative.org">hello@soinitiative.org</a></li></ul></div></div></footer>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     SO BUSINESS
+══════════════════════════════════════ -->
+<div class="page" id="page-sobusiness">
+  <div class="cp-hero">
+    <div class="cp-hero-inner">
+      <button class="back-btn" onclick="showPage('home')">&#8592; Back to SoInitiative</button>
+      <span class="cp-eyebrow">Programme 02 &nbsp;·&nbsp; Business Spotlight &nbsp;·&nbsp; All of Africa</span>
+      <h1 class="cp-title">So <em>Business</em></h1>
+      <p class="cp-tagline">A community spotlight that finds a small African business with a great product but no marketing budget — sets them up free, films their journey, and shares it so the whole continent can see them.</p>
+      <div class="cp-hero-btns">
+        <button class="btn-p" onclick="document.getElementById('sb-form').scrollIntoView({behavior:'smooth'})">Nominate a Business</button>
+        <button class="btn-s" onclick="openGive('business')">&#9825;&nbsp; Give to So Business</button>
+      </div>
+    </div>
+  </div>
+  <div class="cp-content">
+    <div class="cp-content-inner">
+      <span class="section-label">What is So Business?</span>
+      <h2>Great product.<br><em>No budget. Not for long.</em></h2>
+      <div class="divider"></div>
+      <p>So Business is a community spotlight where <strong>anyone nominates an African small business they believe in</strong> — great product, no marketing budget. We onboard them free, recruit their first Brand Ambassadors, and film the moment their first sale arrives.</p>
+      <p>This is not advertising. <strong>It is the community investing in African businesses.</strong> Every episode proves community commerce works.</p>
+      <p><strong>No application fee. No paid placement. No gatekeepers.</strong> The community nominates. We deliver the spotlight.</p>
+    </div>
+  </div>
+  <div class="cp-steps">
+    <div class="cp-steps-inner">
+      <span class="section-label">How It Works</span>
+      <h2>Five steps.<br><em>One business. A real first sale.</em></h2>
+      <div class="divider"></div>
+      <div class="cp-step"><div class="cp-step-num">01</div><div><h3>You Nominate</h3><p>Fill in the form below. Tell us about the business, what they sell, and why you believe in them. You could be a customer, a friend, or someone who knows they deserve more reach.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">02</div><div><h3>We Onboard Them — Free</h3><p>We create their account, list their first product, and set a fair commission with Brand Ambassadors. The owner just shows up — we handle everything else.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">03</div><div><h3>We Recruit Their First Ambassadors</h3><p>Three community Brand Ambassadors aligned with the product receive their unique links and start sharing immediately.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">04</div><div><h3>We Film the Journey</h3><p>The full journey is documented — nomination discovery, onboarding, first Ambassador, and the moment the first sale notification comes through. Genuine. No staging.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">05</div><div><h3>We Publish — And You Share</h3><p>The episode goes live on YouTube, Instagram, TikTok, and LinkedIn. Download the e-flier and post it everywhere.</p></div></div>
+    </div>
+  </div>
+  <div class="form-section" id="sb-form">
+    <div class="form-inner">
+      <span class="section-label">Nominate</span>
+      <h2>Nominate a Business</h2>
+      <p class="form-lead">Takes less than 3 minutes. We review every nomination seriously. Fields marked * are required.</p>
+      <div id="sb-wrap">
+        <div class="form-group"><label>Business name *</label><input type="text" id="sb-biz-name" class="form-control" placeholder="e.g. Adire by Tola" required></div>
+        <div class="form-group"><label>Country *</label><select id="sb-biz-country" class="form-control" required><option value="">Select country...</option><option>Nigeria</option><option>Ghana</option><option>Kenya</option><option>South Africa</option><option>Ethiopia</option><option>Uganda</option><option>Tanzania</option><option>Cameroon</option><option>Senegal</option><option>Côte d'Ivoire</option><option>Zimbabwe</option><option>Rwanda</option><option>Zambia</option><option>Mozambique</option><option>Other</option></select></div>
+        <div class="form-group"><label>What do they sell or offer? *</label><span class="field-hint">Be specific about what makes them special</span><input type="text" id="sb-biz-what" class="form-control" placeholder="e.g. Handmade Adire fabric and clothing, Abeokuta" required></div>
+        <div class="form-group"><label>Website or social media <span class="opt-label">(optional)</span></label><input type="text" id="sb-biz-link" class="form-control" placeholder="https://instagram.com/..."></div>
+        <div class="form-group"><label>Why do they deserve the spotlight? *</label><span class="field-hint">Tell us what makes them special and why they haven't broken through yet</span><textarea id="sb-reason" class="form-control" placeholder="Tell us about the business, owner's story, product quality, and why they need this opportunity..." required></textarea></div>
+        <hr class="form-divider"><span class="divider-label">About you — the nominator</span>
+        <div class="form-row">
+          <div class="form-group"><label>Your name *</label><input type="text" id="sb-nom-name" class="form-control" placeholder="Your full name" required></div>
+          <div class="form-group"><label>Your email *</label><input type="email" id="sb-nom-email" class="form-control" placeholder="you@example.com" required></div>
+        </div>
+        <div class="form-group"><label>Your country <span class="opt-label">(optional)</span></label><input type="text" id="sb-nom-country" class="form-control" placeholder="e.g. Nigeria, UK, USA"></div>
+        <div class="form-group"><label class="consent-wrap"><input type="checkbox" id="sb-consent" required><span class="consent-copy">I confirm I am nominating this business in good faith and consent to my name being included in content credits if they are selected. *</span></label></div>
+        <button class="btn-submit" id="sb-btn" onclick="submitForm('sobusiness')">Submit Nomination &#8594;</button>
+        <div class="form-success" id="sb-success"><h3>Nomination Received</h3><p>Thank you. Our team will review within 48 hours. If the business is selected, we will contact you and them directly.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="flier-section">
+    <div class="flier-section-inner">
+      <span class="section-label">Spread the Word</span>
+      <h2>Download &amp; Share</h2>
+      <div class="divider"></div>
+      <p class="flier-lead">Save the flier and post it anywhere you show up online. The more people who see it, the more businesses get their spotlight.</p>
+      <div class="flier-layout">
+        <div id="sb-flier" class="flier-card fc-business">
+          <div class="f-top"><span class="f-brand">SOINITIATIVE</span><span class="f-num">Programme 02</span></div>
+          <div class="f-mid"><p class="f-eyebrow">Business Spotlight · Africa</p><h2 class="f-title">So<br><em>Business</em></h2><p class="f-tagline">Know an African business with a great product but no marketing? Nominate them — completely free.</p></div>
+          <div class="f-bot"><span class="f-cta">Nominate Now &#8599;</span><span class="f-url">soinitiative.org</span></div>
+        </div>
+        <div class="flier-actions">
+          <h3>Share So Business</h3>
+          <p class="flier-actions-desc">Download as a PNG to post on social media, or copy the link to share via message.</p>
+          <div class="action-stack">
+            <button class="btn-action dl" onclick="downloadFlier('sb-flier','SoBusiness-SoInitiative')">&#8595;&nbsp; Download Flier (PNG)</button>
+            <button class="btn-action sec" onclick="copyLink('sobusiness','sb-flash')">&#128279;&nbsp; Copy Campaign Link</button>
+            <button class="btn-action sec sb-native" onclick="nativeShare('So Business — SoInitiative','Nominate an African business for a free spotlight.','#sobusiness')">&#8599;&nbsp; Share via WhatsApp / More</button>
+            <p class="copy-flash" id="sb-flash">&#10003; Link copied!</p>
+          </div>
+          <div class="share-tips"><strong>LinkedIn:</strong> Great for reaching entrepreneurs and business supporters across Africa.<br><strong>WhatsApp:</strong> Post the PNG with a personal note about a business you believe in.<br><strong>Twitter / X:</strong> Paste the link for an automatic preview card.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><div><p class="footer-brand"><em>So</em>Initiative</p><p class="footer-tagline">Africa giving back to Africa — one nomination at a time.</p><p class="footer-copy">Community-owned. Publicly funded. Transparent.</p></div><div class="footer-col"><h4>Programmes</h4><ul><li><a onclick="showPage('sofamily')">So Family</a></li><li><a onclick="showPage('sobusiness')">So Business</a></li><li><a onclick="showPage('sowedding')">So Wedding</a></li><li><a onclick="showPage('sohero')">So Hero</a></li></ul></div><div class="footer-col"><h4>Navigate</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="openGive('business')">Give to So Business</a></li></ul></div><div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:hello@soinitiative.org">hello@soinitiative.org</a></li></ul></div></div></footer>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     SO WEDDING
+══════════════════════════════════════ -->
+<div class="page" id="page-sowedding">
+  <div class="cp-hero">
+    <div class="cp-hero-inner">
+      <button class="back-btn" onclick="showPage('home')">&#8592; Back to SoInitiative</button>
+      <span class="cp-eyebrow">Programme 03 &nbsp;·&nbsp; Wedding Sponsorship &nbsp;·&nbsp; All of Africa</span>
+      <h1 class="cp-title">So <em>Wedding</em></h1>
+      <p class="cp-tagline">Nominate a couple in Africa who deserve their dream wedding but cannot afford it. The community nominates. The community votes. The winner receives up to &#8358;1,000,000 towards their wedding day.</p>
+      <div class="cp-hero-btns">
+        <button class="btn-p" onclick="document.getElementById('sw-vote').scrollIntoView({behavior:'smooth'})">Vote for a Couple</button>
+        <button class="btn-s" onclick="document.getElementById('sw-form').scrollIntoView({behavior:'smooth'})">Nominate a Couple</button>
+        <button class="btn-give-accent" onclick="openGive('wedding')">&#9825;&nbsp; Give to So Wedding</button>
+      </div>
+    </div>
+  </div>
+  <div class="cp-content">
+    <div class="cp-content-inner">
+      <span class="section-label">What is So Wedding?</span>
+      <h2>Love deserves<br><em>a proper celebration.</em></h2>
+      <div class="divider"></div>
+      <p>So Wedding is a community-powered wedding sponsorship programme. <strong>Anyone can nominate a couple in Africa</strong> who are deeply in love, ready to commit, but don't have the budget for the wedding they deserve. The community then votes on who should receive the sponsorship.</p>
+      <p>The winning couple receives <strong>up to &#8358;1,000,000</strong> towards their wedding — funded entirely by community contributions and commercial sponsors. Every stage is filmed, from nomination discovery to the wedding day itself.</p>
+      <p><strong>This is not a TV show. It is not a competition for entertainment.</strong> It is the community choosing to honour love — and filming the proof that it happened.</p>
+    </div>
+  </div>
+  <div class="cp-steps">
+    <div class="cp-steps-inner">
+      <span class="section-label">How It Works</span>
+      <h2>Five steps.<br><em>One couple. One unforgettable day.</em></h2>
+      <div class="divider"></div>
+      <div class="cp-step"><div class="cp-step-num">01</div><div><h3>You Nominate</h3><p>Fill in the nomination form below. Tell us about the couple — their story, where they are in Africa, and why they deserve this.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">02</div><div><h3>We Verify</h3><p>Our team verifies each nomination within 72 hours. Verified couples are added to the public voting page with their consent.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">03</div><div><h3>The Community Votes</h3><p>Voting is open to everyone. One vote per person per couple. The voting period runs for two weeks. The couple with the most verified votes at close wins the sponsorship.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">04</div><div><h3>We Plan and Fund the Wedding</h3><p>The winning couple receives up to &#8358;1,000,000 towards their wedding, planned with our local partners. Every supplier is coordinated by SoInitiative on their behalf.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">05</div><div><h3>We Film the Day — And Share It</h3><p>The entire journey is filmed — from nomination to vows. The wedding day video goes live across YouTube, Instagram, and TikTok.</p></div></div>
+    </div>
+  </div>
+
+  <!-- VOTING -->
+  <div class="vote-section" id="sw-vote">
+    <div class="vote-inner">
+      <div class="vote-header">
+        <div>
+          <span class="section-label">Community Vote</span>
+          <h2 class="section-title">Vote for a couple.<br><em>Change their lives.</em></h2>
+          <div class="divider"></div>
+        </div>
+        <p class="vote-note">One vote per person. All votes recorded. Results announced publicly at the end of each voting cycle.</p>
+      </div>
+      <!--
+      ╔══════════════════════════════════════════════════════════╗
+      ║             ADMIN — HOW TO ADD COUPLES                   ║
+      ╠══════════════════════════════════════════════════════════╣
+      ║  Copy this block and paste it before .vote-placeholder:  ║
+      ║                                                          ║
+      ║  <div class="nominee-card" data-id="CoupleID">          ║
+      ║    <div class="nominee-num">01</div>                     ║
+      ║    <h3 class="nominee-name">Name & Name</h3>            ║
+      ║    <p class="nominee-location">City, Country</p>         ║
+      ║    <p class="nominee-story">Their story here.</p>        ║
+      ║    <button class="btn-vote rose"                         ║
+      ║      onclick="castVote(this,'Name','sowedding')">        ║
+      ║      Vote for This Couple                                ║
+      ║    </button>                                             ║
+      ║  </div>                                                  ║
+      ╚══════════════════════════════════════════════════════════╝
+      -->
+      <div class="nominees-grid" id="sw-nominees">
+        <div class="vote-placeholder"><p>Nominations are being verified. The first couples will appear here shortly. Nominate a couple below.</p></div>
+      </div>
+      <div class="vote-success" id="sw-vote-success">&#10003; Your vote has been recorded. Thank you. Share the page so more people can vote.</div>
+    </div>
+  </div>
+
+  <div class="form-section" id="sw-form">
+    <div class="form-inner">
+      <span class="section-label">Nominate</span>
+      <h2>Nominate a Couple</h2>
+      <p class="form-lead">Know a couple who deserve their dream wedding? Tell us their story. Takes less than 3 minutes. Fields marked * are required.</p>
+      <div id="sw-wrap">
+        <div class="form-group"><label>Couple name or identifier *</label><span class="field-hint">First names or a description is fine</span><input type="text" id="sw-couple" class="form-control" placeholder="e.g. Emeka and Chisom, or 'A couple from Enugu together for 5 years'" required></div>
+        <div class="form-group"><label>Country *</label><select id="sw-country" class="form-control" required><option value="">Select country...</option><option>Nigeria</option><option>Ghana</option><option>Kenya</option><option>South Africa</option><option>Ethiopia</option><option>Uganda</option><option>Tanzania</option><option>Cameroon</option><option>Senegal</option><option>Côte d'Ivoire</option><option>Zimbabwe</option><option>Rwanda</option><option>Zambia</option><option>Mozambique</option><option>Other</option></select></div>
+        <div class="form-group"><label>City or area *</label><input type="text" id="sw-location" class="form-control" placeholder="e.g. Enugu" required></div>
+        <div class="form-group"><label>How long have they been together? *</label><input type="text" id="sw-duration" class="form-control" placeholder="e.g. 4 years" required></div>
+        <div class="form-group"><label>Their story *</label><span class="field-hint">Who are they? Why do they deserve this? What makes their love story worth celebrating?</span><textarea id="sw-story" class="form-control" placeholder="Tell us everything — their journey, relationship, circumstances, and why this wedding would mean the world to them..." required></textarea></div>
+        <div class="form-group"><label>Do they know you are nominating them? *</label><select id="sw-aware" class="form-control" required><option value="">Select...</option><option>Yes — they know and have consented</option><option>No — it is a surprise nomination</option></select></div>
+        <hr class="form-divider"><span class="divider-label">About you — the nominator</span>
+        <div class="form-row">
+          <div class="form-group"><label>Your name *</label><input type="text" id="sw-nom-name" class="form-control" placeholder="Your full name" required></div>
+          <div class="form-group"><label>Your email *</label><input type="email" id="sw-nom-email" class="form-control" placeholder="you@example.com" required></div>
+        </div>
+        <div class="form-group"><label>Your phone <span class="opt-label">(optional but helpful)</span></label><input type="tel" id="sw-nom-phone" class="form-control" placeholder="+234 800 000 0000"></div>
+        <div class="form-group"><label class="consent-wrap"><input type="checkbox" id="sw-consent" required><span class="consent-copy">I confirm this nomination is made in good faith. I understand the couple's story will be shared publicly if selected for voting, and I will help obtain their consent before that stage. *</span></label></div>
+        <button class="btn-submit" id="sw-btn" onclick="submitForm('sowedding')">Submit Nomination &#8594;</button>
+        <div class="form-success" id="sw-success"><h3>Nomination Received</h3><p>Thank you. Our team will review within 72 hours. If the couple is selected for voting, we will contact you to confirm consent before publishing their story.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flier-section">
+    <div class="flier-section-inner">
+      <span class="section-label">Spread the Word</span>
+      <h2>Download &amp; Share</h2>
+      <div class="divider"></div>
+      <p class="flier-lead">Share the flier to bring in more nominations and more votes. Every share could mean one more couple gets their dream wedding.</p>
+      <div class="flier-layout">
+        <div id="sw-flier" class="flier-card fc-wedding">
+          <div class="f-top"><span class="f-brand">SOINITIATIVE</span><span class="f-num">Programme 03</span></div>
+          <div class="f-mid"><p class="f-eyebrow">Wedding Sponsorship · Africa</p><h2 class="f-title">So<br><em>Wedding</em></h2><p class="f-tagline">Nominate a couple who deserve their dream wedding. Community votes. Winner receives up to &#8358;1,000,000.</p></div>
+          <div class="f-bot"><span class="f-cta">Nominate &amp; Vote &#8599;</span><span class="f-url">soinitiative.org</span></div>
+        </div>
+        <div class="flier-actions">
+          <h3>Share So Wedding</h3>
+          <p class="flier-actions-desc">Download the flier as a PNG to post on social media, or copy the link to share directly.</p>
+          <div class="action-stack">
+            <button class="btn-action dl" onclick="downloadFlier('sw-flier','SoWedding-SoInitiative')">&#8595;&nbsp; Download Flier (PNG)</button>
+            <button class="btn-action sec" onclick="copyLink('sowedding','sw-flash')">&#128279;&nbsp; Copy Campaign Link</button>
+            <button class="btn-action sec sw-native" onclick="nativeShare('So Wedding — SoInitiative','Nominate a couple in Africa for their dream wedding.','#sowedding')">&#8599;&nbsp; Share via WhatsApp / More</button>
+            <p class="copy-flash" id="sw-flash">&#10003; Link copied!</p>
+          </div>
+          <div class="share-tips"><strong>WhatsApp family groups:</strong> This one travels fast — post the flier with a couple's name you want to support.<br><strong>Instagram:</strong> Add the link in your bio during voting periods.<br><strong>LinkedIn:</strong> Paste the link for an automatic preview card.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><div><p class="footer-brand"><em>So</em>Initiative</p><p class="footer-tagline">Africa giving back to Africa — one nomination at a time.</p><p class="footer-copy">Community-owned. Publicly funded. Transparent.</p></div><div class="footer-col"><h4>Programmes</h4><ul><li><a onclick="showPage('sofamily')">So Family</a></li><li><a onclick="showPage('sobusiness')">So Business</a></li><li><a onclick="showPage('sowedding')">So Wedding</a></li><li><a onclick="showPage('sohero')">So Hero</a></li></ul></div><div class="footer-col"><h4>Navigate</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="openGive('wedding')">Give to So Wedding</a></li></ul></div><div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:hello@soinitiative.org">hello@soinitiative.org</a></li></ul></div></div></footer>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     SO HERO
+══════════════════════════════════════ -->
+<div class="page" id="page-sohero">
+  <div class="cp-hero">
+    <div class="cp-hero-inner">
+      <button class="back-btn" onclick="showPage('home')">&#8592; Back to SoInitiative</button>
+      <span class="cp-eyebrow">Programme 04 &nbsp;·&nbsp; Monthly Recognition Award &nbsp;·&nbsp; Africa</span>
+      <h1 class="cp-title">So <em>Hero</em></h1>
+      <p class="cp-tagline">Nominate the worker or campus leader in Africa who truly deserves recognition. Colleagues and students vote. The highest votes win a &#8358;200,000 monthly cash gift — one workplace winner, one campus winner, every month.</p>
+      <div class="cp-hero-btns">
+        <button class="btn-p" onclick="document.getElementById('sh-vote').scrollIntoView({behavior:'smooth'})">Vote for a Hero</button>
+        <button class="btn-s" onclick="document.getElementById('sh-form').scrollIntoView({behavior:'smooth'})">Nominate a Hero</button>
+        <button class="btn-give-accent" onclick="openGive('hero')">&#9825;&nbsp; Give to So Hero</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cp-content">
+    <div class="cp-content-inner">
+      <span class="section-label">What is So Hero?</span>
+      <h2>Every organisation has<br><em>someone who holds it together.</em></h2>
+      <div class="divider"></div>
+      <p>So Hero is a monthly recognition award for the people who show up, lead quietly, and make their teams and communities better — without ever being celebrated for it. <strong>Anyone can nominate a deserving person in their workplace or on their campus across Africa.</strong></p>
+      <p>There are <strong>two separate categories</strong> every month. The Workplace Award recognises an employee, team leader, manager, or any staff member in any organisation. The Campus Award recognises a student representative, student union leader, course rep, or lecturer at any tertiary institution across Africa.</p>
+      <p><strong>The community votes. The highest votes in each category wins &#8358;200,000</strong> — deposited directly to the winner. No panel. No management approval. <strong>Just the community deciding who deserves to be seen.</strong></p>
+    </div>
+  </div>
+
+  <div class="cp-steps">
+    <div class="cp-steps-inner">
+      <span class="section-label">How It Works</span>
+      <h2>Five steps.<br><em>One hero. &#8358;200,000.</em></h2>
+      <div class="divider"></div>
+      <div class="cp-step"><div class="cp-step-num">01</div><div><h3>You Nominate</h3><p>Fill in the form below. Choose whether the nomination is for the Workplace category or the Campus category. Tell us who the person is, what organisation or institution they belong to, and why they deserve this.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">02</div><div><h3>We Verify</h3><p>Our team verifies each nomination within 48 hours. Verified nominees are added to the public voting board under the correct category. Their story is shared with their consent.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">03</div><div><h3>The Community Votes</h3><p>Voting is open to everyone. Colleagues, classmates, and the public all vote. One vote per person per nominee. Voting closes at the end of each calendar month. One winner per category.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">04</div><div><h3>&#8358;200,000 Is Paid to the Winner</h3><p>The winner in each category receives &#8358;200,000 deposited directly to their account. The award is announced publicly. The moment is filmed and shared — with full consent.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">05</div><div><h3>The Story Goes Live — And a New Cycle Begins</h3><p>The winner's story is published across YouTube, Instagram, TikTok, and LinkedIn. Nominations open for the next month immediately. Download the e-flier and share it to bring in the next hero.</p></div></div>
+    </div>
+  </div>
+
+  <!-- VOTING TABS -->
+  <div class="vote-tabs-section" id="sh-vote">
+    <div class="vote-tabs-inner">
+      <span class="section-label">Community Vote — Current Month</span>
+      <h2 class="section-title">Vote for your <em>hero.</em></h2>
+      <div class="divider"></div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:var(--dim);margin-bottom:2rem;line-height:1.65;">Two categories. Two winners. One vote per person per nominee. Voting closes at end of each month.</p>
+
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('workplace')">&#127970;&nbsp; Workplace Award</button>
+        <button class="tab-btn" onclick="switchTab('campus')">&#127979;&nbsp; Campus Award</button>
+      </div>
+
+      <!-- WORKPLACE TAB -->
+      <div class="tab-panel active" id="tab-workplace">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem">
+          <div>
+            <p style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:0.3rem">Workplace Award</p>
+            <p style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:var(--dimmer)">Employees, team leaders, managers — any organisation in Africa</p>
+          </div>
+          <p style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--amber);letter-spacing:0.02em">&#8358;200,000</p>
+        </div>
+        <!--
+        ADMIN — Add workplace nominees here. Copy this block:
+
+        <div class="nominee-card" data-id="WorkplaceID">
+          <div class="nominee-num">01</div>
+          <h3 class="nominee-name">Full Name</h3>
+          <p class="nominee-location">Organisation, City</p>
+          <p class="nominee-story">Why they deserve this. What they do. How they show up.</p>
+          <button class="btn-vote amber" onclick="castVote(this,'Full Name','hero-workplace')">Vote for This Person</button>
+        </div>
+        -->
+        <div class="nominees-grid">
+          <div class="vote-placeholder"><p>Workplace nominees for this month will appear here once verified. Nominate someone below.</p></div>
+        </div>
+      </div>
+
+      <!-- CAMPUS TAB -->
+      <div class="tab-panel" id="tab-campus">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem">
+          <div>
+            <p style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:0.3rem">Campus Award</p>
+            <p style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:var(--dimmer)">Student reps, student union leaders, course reps, lecturers — any tertiary institution in Africa</p>
+          </div>
+          <p style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--amber);letter-spacing:0.02em">&#8358;200,000</p>
+        </div>
+        <!--
+        ADMIN — Add campus nominees here. Copy this block:
+
+        <div class="nominee-card" data-id="CampusID">
+          <div class="nominee-num">01</div>
+          <h3 class="nominee-name">Full Name</h3>
+          <p class="nominee-location">Institution, City</p>
+          <p class="nominee-story">Why they deserve this. Their role. Their impact on campus.</p>
+          <button class="btn-vote amber" onclick="castVote(this,'Full Name','hero-campus')">Vote for This Person</button>
+        </div>
+        -->
+        <div class="nominees-grid">
+          <div class="vote-placeholder"><p>Campus nominees for this month will appear here once verified. Nominate someone below.</p></div>
+        </div>
+      </div>
+
+      <div class="vote-success" id="sh-vote-success">&#10003; Your vote has been recorded. Thank you. Share the page so more people can vote for their hero.</div>
+    </div>
+  </div>
+
+  <!-- NOMINATION FORM -->
+  <div class="form-section" id="sh-form">
+    <div class="form-inner">
+      <span class="section-label">Nominate</span>
+      <h2>Nominate a Hero</h2>
+      <p class="form-lead">Know someone who shows up every day and deserves to be seen? Nominate them in under 3 minutes. Fields marked * are required.</p>
+      <div id="sh-wrap">
+        <div class="form-group">
+          <label>Category *</label>
+          <select id="sh-category" class="form-control" required>
+            <option value="">Select category...</option>
+            <option value="Workplace">Workplace Award — employee, team leader, manager, staff member</option>
+            <option value="Campus">Campus Award — student rep, student union, course rep, lecturer</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Nominee's name *</label><input type="text" id="sh-nom-name" class="form-control" placeholder="Full name of the person you are nominating" required></div>
+        <div class="form-group">
+          <label>Their role or position *</label>
+          <span class="field-hint">e.g. Customer service officer, Student Union President, Head of Department</span>
+          <input type="text" id="sh-role" class="form-control" placeholder="Their job title or campus role" required>
+        </div>
+        <div class="form-group"><label>Organisation or institution *</label><span class="field-hint">Company name, school name, or university name</span><input type="text" id="sh-org" class="form-control" placeholder="e.g. Access Bank Lagos, University of Ibadan" required></div>
+        <div class="form-group"><label>Country *</label><select id="sh-country" class="form-control" required><option value="">Select country...</option><option>Nigeria</option><option>Ghana</option><option>Kenya</option><option>South Africa</option><option>Ethiopia</option><option>Uganda</option><option>Tanzania</option><option>Cameroon</option><option>Senegal</option><option>Côte d'Ivoire</option><option>Zimbabwe</option><option>Rwanda</option><option>Zambia</option><option>Mozambique</option><option>Other</option></select></div>
+        <div class="form-group">
+          <label>Why do they deserve this? *</label>
+          <span class="field-hint">Be specific — what have they done, how have they shown up, what impact have they made?</span>
+          <textarea id="sh-reason" class="form-control" placeholder="Tell us what makes this person a hero — their work ethic, their impact on colleagues or students, specific things they have done that went unrecognised..." required></textarea>
+        </div>
+        <div class="form-group"><label>Does the nominee know you are nominating them? *</label><select id="sh-aware" class="form-control" required><option value="">Select...</option><option>Yes — they know</option><option>No — it is a surprise</option></select></div>
+        <hr class="form-divider"><span class="divider-label">About you — the nominator</span>
+        <div class="form-row">
+          <div class="form-group"><label>Your name *</label><input type="text" id="sh-your-name" class="form-control" placeholder="Your full name" required></div>
+          <div class="form-group"><label>Your email *</label><input type="email" id="sh-your-email" class="form-control" placeholder="you@example.com" required></div>
+        </div>
+        <div class="form-group"><label>Your relationship to the nominee *</label><input type="text" id="sh-relationship" class="form-control" placeholder="e.g. Colleague, classmate, direct report, student" required></div>
+        <div class="form-group"><label class="consent-wrap"><input type="checkbox" id="sh-consent" required><span class="consent-copy">I confirm this nomination is made in good faith. I understand the nominee's story may be shared publicly if selected for voting, and consent will be obtained from them before that stage. *</span></label></div>
+        <button class="btn-submit" id="sh-btn" onclick="submitForm('sohero')">Submit Nomination &#8594;</button>
+        <div class="form-success" id="sh-success"><h3>Nomination Received</h3><p>Thank you. Our team will review within 48 hours. If the nominee is selected for voting, we will contact you and obtain their consent before publishing their story.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flier-section">
+    <div class="flier-section-inner">
+      <span class="section-label">Spread the Word</span>
+      <h2>Download &amp; Share</h2>
+      <div class="divider"></div>
+      <p class="flier-lead">Share the flier so more heroes get nominated. Every share could mean one more person gets the recognition — and the &#8358;200,000 — they deserve.</p>
+      <div class="flier-layout">
+        <div id="sh-flier" class="flier-card fc-hero">
+          <div class="f-top"><span class="f-brand">SOINITIATIVE</span><span class="f-num">Programme 04</span></div>
+          <div class="f-mid"><p class="f-eyebrow">Monthly Recognition Award · Africa</p><h2 class="f-title">So<br><em>Hero</em></h2><p class="f-tagline">Know a worker or campus leader who deserves recognition? Nominate them. Community votes. Winner gets &#8358;200,000.</p></div>
+          <div class="f-bot"><span class="f-cta">Nominate &amp; Vote &#8599;</span><span class="f-url">soinitiative.org</span></div>
+        </div>
+        <div class="flier-actions">
+          <h3>Share So Hero</h3>
+          <p class="flier-actions-desc">Download as a PNG to post on social media, or copy the link to share via message or group chat.</p>
+          <div class="action-stack">
+            <button class="btn-action dl" onclick="downloadFlier('sh-flier','SoHero-SoInitiative')">&#8595;&nbsp; Download Flier (PNG)</button>
+            <button class="btn-action sec" onclick="copyLink('sohero','sh-flash')">&#128279;&nbsp; Copy Campaign Link</button>
+            <button class="btn-action sec sh-native" onclick="nativeShare('So Hero Award — SoInitiative','Nominate the hero in your workplace or campus.','#sohero')">&#8599;&nbsp; Share via WhatsApp / More</button>
+            <p class="copy-flash" id="sh-flash">&#10003; Link copied!</p>
+          </div>
+          <div class="share-tips"><strong>Work WhatsApp groups:</strong> Share directly in your office or team group — colleagues nominate each other.<br><strong>Student groups:</strong> Post in your department or faculty group chat.<br><strong>LinkedIn:</strong> Tag the person you are nominating in your post.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><div><p class="footer-brand"><em>So</em>Initiative</p><p class="footer-tagline">Africa giving back to Africa — one nomination at a time.</p><p class="footer-copy">Community-owned. Publicly funded. Transparent.</p></div><div class="footer-col"><h4>Programmes</h4><ul><li><a onclick="showPage('sofamily')">So Family</a></li><li><a onclick="showPage('sobusiness')">So Business</a></li><li><a onclick="showPage('sowedding')">So Wedding</a></li><li><a onclick="showPage('sohero')">So Hero</a></li></ul></div><div class="footer-col"><h4>Navigate</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="openGive('hero')">Give to So Hero</a></li></ul></div><div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:hello@soinitiative.org">hello@soinitiative.org</a></li></ul></div></div></footer>
+</div>
+
+
+<script>
+/*
+╔══════════════════════════════════════════════════════════════════════╗
+║              GOOGLE SHEETS — COMPLETE BEFORE LAUNCH                  ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  STEP 1 — Create a Google Sheet with two tabs:                       ║
+║                                                                      ║
+║  Tab 1: "Nominations" — columns:                                     ║
+║  Date | Campaign | Category | Country | Nominee | Role | Org |      ║
+║  Location | What | Story | Link | Duration | Aware | Relationship |  ║
+║  Nominator Name | Nominator Email | Nominator Phone | Nom Country    ║
+║                                                                      ║
+║  Tab 2: "Votes" — columns:                                           ║
+║  Date | Campaign | Nominee | Email                                   ║
+║                                                                      ║
+║  STEP 2 — Go to https://script.google.com → New Project              ║
+║  Paste this function:                                                ║
+║                                                                      ║
+║  function doPost(e) {                                                ║
+║    try {                                                             ║
+║      var ss = SpreadsheetApp.openById('YOUR_SHEET_ID');             ║
+║      var d = JSON.parse(e.postData.contents);                       ║
+║      if (d.type === 'vote') {                                        ║
+║        ss.getSheetByName('Votes').appendRow([                       ║
+║          new Date(),d.campaign,d.nominee,d.email                    ║
+║        ]);                                                           ║
+║      } else {                                                        ║
+║        ss.getSheetByName('Nominations').appendRow([                 ║
+║          new Date(),d.campaign,d.category||'',d.country||'',       ║
+║          d.nominee||'',d.role||'',d.org||'',d.location||'',        ║
+║          d.what||'',d.story||d.reason||'',d.link||'',              ║
+║          d.duration||'',d.aware||'',d.relationship||'',            ║
+║          d.nominator_name||'',d.nominator_email||'',               ║
+║          d.nominator_phone||'',d.nominator_country||''             ║
+║        ]);                                                           ║
+║      }                                                               ║
+║      return ContentService                                           ║
+║        .createTextOutput(JSON.stringify({ok:true}))                 ║
+║        .setMimeType(ContentService.MimeType.JSON);                   ║
+║    } catch(err) {                                                    ║
+║      return ContentService                                           ║
+║        .createTextOutput(JSON.stringify({ok:false}))                ║
+║        .setMimeType(ContentService.MimeType.JSON);                   ║
+║    }                                                                 ║
+║  }                                                                   ║
+║                                                                      ║
+║  STEP 3 — Deploy > New Deployment                                    ║
+║  Type: Web App | Execute as: Me | Access: Anyone                    ║
+║  Copy the URL and paste it as SHEET_URL below                       ║
+║                                                                      ║
+║  STEP 4 — Replace YOUR_STRIPE_PAYMENT_LINK_HERE in the modal        ║
+║  STEP 5 — Replace bank detail placeholders in the modal             ║
+║  STEP 6 — Change assumption: if So Hero has ONE winner (not two),   ║
+║  remove the Campus tab and merge forms into one                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+*/
+
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwDVUlWDCeK6rlAP6wQ-OweGzuIiSn1Ut7vTAxZQgrVXmlqmU2vDFweCw6gbVgqv1Y/exec';
+
+// ── COMING SOON GATE ───────────────────────────────────────────────────
+// Change GATE_PASS before launch. Unlock persists for the browser session only.
+const GATED_PAGES = ['sofamily', 'sowedding'];
+const GATE_PASS = 'soinit-preview';
+const GATE_STORAGE_KEY = 'soinit_gate_unlock';
+
+const gateCopy = {
+  sofamily: {
+    theme: 'gate-family',
+    eyebrow: 'Programme 01 · Coming Soon',
+    title: 'So <em>Family</em>',
+    lead: 'We\'re putting the finishing touches on this programme. Nominations open soon — explore So Business and So Hero in the meantime.',
+    altPage: 'sobusiness',
+    altLabel: 'Explore So Business',
+  },
+  sowedding: {
+    theme: 'gate-wedding',
+    eyebrow: 'Programme 03 · Coming Soon',
+    title: 'So <em>Wedding</em>',
+    lead: 'We\'re preparing the nomination and voting experience. Check back soon — or explore our other programmes meanwhile.',
+    altPage: 'sohero',
+    altLabel: 'Explore So Hero',
+  },
+};
+
+let gateTarget = 'sofamily';
+
+function isGateUnlocked() {
+  return sessionStorage.getItem(GATE_STORAGE_KEY) === '1';
+}
+
+function unlockGate() {
+  sessionStorage.setItem(GATE_STORAGE_KEY, '1');
+}
+
+function isGatedPage(p) {
+  return GATED_PAGES.includes(p) && !isGateUnlocked();
+}
+
+function showGate(p) {
+  gateTarget = p;
+  const cfg = gateCopy[p] || gateCopy.sofamily;
+  const screen = document.getElementById('gate-screen');
+  screen.className = 'gate-screen ' + cfg.theme;
+  document.getElementById('gate-eyebrow').textContent = cfg.eyebrow;
+  document.getElementById('gate-title').innerHTML = cfg.title;
+  document.getElementById('gate-lead').textContent = cfg.lead;
+  const altBtn = document.getElementById('gate-alt-btn');
+  altBtn.textContent = cfg.altLabel;
+  altBtn.onclick = () => showPage(cfg.altPage);
+
+  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+  document.getElementById('page-gate').classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
+  const nv = document.getElementById('nav-' + p);
+  if (nv) nv.classList.add('active');
+  if (window.location.hash.replace('#', '') !== p) {
+    history.replaceState(null, '', '#' + p);
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('nav-menu').classList.remove('open');
+  const passEl = document.getElementById('gate-pass-input');
+  if (passEl) passEl.value = '';
+}
+
+function tryGateBypass() {
+  const input = document.getElementById('gate-pass-input');
+  if (!input || input.value !== GATE_PASS) return;
+  unlockGate();
+  input.value = '';
+  showPage(gateTarget);
+}
+
+// ── ROUTING ──────────────────────────────────────────────────────────
+function showPage(p) {
+  if (isGatedPage(p)) {
+    showGate(p);
+    return;
+  }
+  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
+  const pg = document.getElementById('page-' + p);
+  if (pg) pg.classList.add('active');
+  const nv = document.getElementById('nav-' + p);
+  if (nv) nv.classList.add('active');
+  if (['home', 'sofamily', 'sobusiness', 'sowedding', 'sohero'].includes(p)) {
+    history.replaceState(null, '', '#' + p);
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('nav-menu').classList.remove('open');
+}
+
+function toggleMenu() {
+  document.getElementById('nav-menu').classList.toggle('open');
+}
+
+// ── TABS (So Hero) ───────────────────────────────────────────────────
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── HOW IT WORKS POPUP (first 3 visits) ───────────────────────────────
+const HIW_VISIT_KEY = 'soinit_hiw_visits';
+const HIW_MAX_AUTO_SHOWS = 3;
+
+function getHiwVisits() {
+  const n = parseInt(localStorage.getItem(HIW_VISIT_KEY) || '0', 10);
+  return Number.isFinite(n) ? n : 0;
+}
+
+function setHiwVisits(n) {
+  localStorage.setItem(HIW_VISIT_KEY, String(n));
+}
+
+function updateHiwVisitNote() {
+  const el = document.getElementById('hiw-visit-note');
+  if (!el) return;
+  const v = getHiwVisits();
+  if (v > 0 && v <= HIW_MAX_AUTO_SHOWS) {
+    el.textContent = 'Welcome back · visit ' + v + ' of ' + HIW_MAX_AUTO_SHOWS;
+  } else {
+    el.textContent = '';
+  }
+}
+
+function openHiwExpanded() {
+  const popup = document.getElementById('hiw-popup');
+  if (!popup) return;
+  popup.classList.add('hiw-visible');
+  popup.classList.remove('minimized');
+  popup.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('hiw-open');
+  updateHiwVisitNote();
+}
+
+function minimizeHiw() {
+  const popup = document.getElementById('hiw-popup');
+  if (!popup) return;
+  popup.classList.add('hiw-visible', 'minimized');
+  popup.setAttribute('aria-hidden', 'false');
+  document.body.classList.remove('hiw-open');
+}
+
+function expandHiw() {
+  const popup = document.getElementById('hiw-popup');
+  if (!popup) return;
+  popup.classList.remove('minimized');
+  popup.classList.add('hiw-visible');
+  popup.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('hiw-open');
+  updateHiwVisitNote();
+}
+
+function hideHiw() {
+  const popup = document.getElementById('hiw-popup');
+  if (!popup) return;
+  popup.classList.remove('hiw-visible', 'minimized');
+  popup.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('hiw-open');
+}
+
+function dismissHiw() {
+  if (getHiwVisits() >= HIW_MAX_AUTO_SHOWS) {
+    minimizeHiw();
+  } else {
+    hideHiw();
+  }
+  const home = document.getElementById('page-home');
+  if (home && !home.classList.contains('active')) showPage('home');
+  document.querySelector('.campaigns-home')?.scrollIntoView({ behavior: 'smooth' });
+}
+
+function bindHiwPanel() {
+  const panel = document.getElementById('hiw-panel');
+  if (!panel || panel.dataset.hiwBound) return;
+  panel.dataset.hiwBound = '1';
+  panel.addEventListener('click', () => {
+    const popup = document.getElementById('hiw-popup');
+    if (popup?.classList.contains('minimized')) expandHiw();
+  });
+}
+
+function initHiwOnLanding() {
+  bindHiwPanel();
+  const visits = getHiwVisits();
+  if (visits >= HIW_MAX_AUTO_SHOWS) {
+    minimizeHiw();
+    return;
+  }
+  setHiwVisits(visits + 1);
+  updateHiwVisitNote();
+  setTimeout(openHiwExpanded, 500);
+}
+
+// ── INIT ─────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  const h = window.location.hash.replace('#','').toLowerCase();
+  const valid = ['home','sofamily','sobusiness','sowedding','sohero'];
+  if (valid.includes(h)) showPage(h);
+  initHiwOnLanding();
+  // Hide native share if unsupported
+  if (!navigator.share) {
+    document.querySelectorAll('[class*="-native"]').forEach(el => el.style.display = 'none');
+  }
+});
+
+// ── GIVE MODAL ────────────────────────────────────────────────────────
+const giveCfg = {
+  general:  { title:'Give to SoInitiative',  sub:'Support any programme — allocated where most needed', ref:'SoInitiative' },
+  family:   { title:'Give to So Family',      sub:'Help fund a family meal delivery in Africa',          ref:'SoFamily' },
+  business: { title:'Give to So Business',    sub:'Help fund a free business spotlight',                 ref:'SoBusiness' },
+  wedding:  { title:'Give to So Wedding',     sub:'Help fund a couple\'s dream wedding in Africa',       ref:'SoWedding' },
+  hero:     { title:'Give to So Hero Award',  sub:'Help fund the &#8358;200,000 monthly cash gifts',    ref:'SoHero' },
+};
+function openGive(c) {
+  const cfg = giveCfg[c] || giveCfg.general;
+  document.getElementById('modal-title').textContent = cfg.title;
+  document.getElementById('modal-sub').innerHTML = cfg.sub;
+  document.getElementById('bank-ref').textContent = cfg.ref;
+  document.getElementById('give-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeGive() {
+  document.getElementById('give-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('give-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeGive();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeGive(); });
+
+// ── FORM SUBMIT ───────────────────────────────────────────────────────
+function v(id) { return (document.getElementById(id)?.value || '').trim(); }
+
+async function submitForm(campaign) {
+  let data = {}, btnId, sucId;
+
+  if (campaign === 'sofamily') {
+    const name=v('sf-name'),country=v('sf-country'),loc=v('sf-location'),
+          reason=v('sf-reason'),nomName=v('sf-nom-name'),nomEmail=v('sf-nom-email'),nomCountry=v('sf-nom-country'),
+          consent=document.getElementById('sf-consent').checked;
+    if (!name||!country||!loc||!reason||!nomName||!nomEmail){alert('Please fill in all required fields.');return}
+    if (!consent){alert('Please tick the consent checkbox.');return}
+    data={campaign:'So Family',country,nominee:name,location:loc,reason,nominator_name:nomName,nominator_email:nomEmail,nominator_country:nomCountry};
+    btnId='sf-btn';sucId='sf-success';
+
+  } else if (campaign === 'sobusiness') {
+    const bizName=v('sb-biz-name'),country=v('sb-biz-country'),what=v('sb-biz-what'),
+          link=v('sb-biz-link'),reason=v('sb-reason'),nomName=v('sb-nom-name'),
+          nomEmail=v('sb-nom-email'),nomCountry=v('sb-nom-country'),
+          consent=document.getElementById('sb-consent').checked;
+    if (!bizName||!country||!what||!reason||!nomName||!nomEmail){alert('Please fill in all required fields.');return}
+    if (!consent){alert('Please tick the consent checkbox.');return}
+    data={campaign:'So Business',country,nominee:bizName,what,link,reason,nominator_name:nomName,nominator_email:nomEmail,nominator_country:nomCountry};
+    btnId='sb-btn';sucId='sb-success';
+
+  } else if (campaign === 'sowedding') {
+    const couple=v('sw-couple'),country=v('sw-country'),loc=v('sw-location'),
+          duration=v('sw-duration'),story=v('sw-story'),aware=v('sw-aware'),
+          nomName=v('sw-nom-name'),nomEmail=v('sw-nom-email'),nomPhone=v('sw-nom-phone'),
+          consent=document.getElementById('sw-consent').checked;
+    if (!couple||!country||!loc||!duration||!story||!aware||!nomName||!nomEmail){alert('Please fill in all required fields.');return}
+    if (!consent){alert('Please tick the consent checkbox.');return}
+    data={campaign:'So Wedding',country,nominee:couple,location:loc,duration,story,aware,nominator_name:nomName,nominator_email:nomEmail,nominator_phone:nomPhone};
+    btnId='sw-btn';sucId='sw-success';
+
+  } else {
+    const category=v('sh-category'),nomineeName=v('sh-nom-name'),role=v('sh-role'),
+          org=v('sh-org'),country=v('sh-country'),reason=v('sh-reason'),
+          aware=v('sh-aware'),yourName=v('sh-your-name'),yourEmail=v('sh-your-email'),
+          relationship=v('sh-relationship'),consent=document.getElementById('sh-consent').checked;
+    if (!category||!nomineeName||!role||!org||!country||!reason||!aware||!yourName||!yourEmail||!relationship){alert('Please fill in all required fields.');return}
+    if (!consent){alert('Please tick the consent checkbox.');return}
+    data={campaign:'So Hero',category,nominee:nomineeName,role,org,country,reason,aware,relationship,nominator_name:yourName,nominator_email:yourEmail};
+    btnId='sh-btn';sucId='sh-success';
+  }
+
+  const btn = document.getElementById(btnId);
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
+
+  try {
+    if (SHEET_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+      await new Promise(r => setTimeout(r, 800));
+    } else {
+      await fetch(SHEET_URL, {method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    }
+    btn.style.display = 'none';
+    const suc = document.getElementById(sucId);
+    suc.style.display = 'block';
+    suc.scrollIntoView({behavior:'smooth',block:'center'});
+  } catch {
+    btn.textContent = 'Submit Nomination →';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again or email hello@soinitiative.org');
+  }
+}
+
+// ── VOTING ─────────────────────────────────────────────────────────────
+async function castVote(btn, nomineeName, campaign) {
+  const email = prompt('Enter your email to verify your vote (one vote per person):');
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  const data = { type:'vote', campaign, nominee:nomineeName, email };
+  btn.textContent = 'Recording...';
+  btn.disabled = true;
+  const successId = campaign === 'sowedding' ? 'sw-vote-success' : 'sh-vote-success';
+  const votedClass = campaign === 'sowedding' ? 'voted-rose' : 'voted-card';
+  try {
+    if (SHEET_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+      await new Promise(r => setTimeout(r, 700));
+    } else {
+      await fetch(SHEET_URL, {method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    }
+    btn.textContent = '&#10003; Voted';
+    btn.innerHTML = '&#10003; Voted';
+    btn.classList.add('voted-state');
+    btn.closest('.nominee-card').classList.add(votedClass);
+    const suc = document.getElementById(successId);
+    suc.style.display = 'block';
+    suc.scrollIntoView({behavior:'smooth',block:'center'});
+  } catch {
+    btn.textContent = 'Vote for This Person';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  }
+}
+
+// ── FLIER DOWNLOAD ─────────────────────────────────────────────────────
+async function downloadFlier(id, name) {
+  const el = document.getElementById(id);
+  try {
+    const c = await html2canvas(el, {scale:3,useCORS:true,backgroundColor:null,logging:false});
+    const a = document.createElement('a');
+    a.download = name + '.png';
+    a.href = c.toDataURL('image/png');
+    a.click();
+  } catch {
+    alert('Could not generate flier. Please try in Chrome or Safari.');
+  }
+}
+
+// ── COPY LINK ──────────────────────────────────────────────────────────
+function copyLink(campaign, flashId) {
+  const url = window.location.origin + window.location.pathname + '#' + campaign;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(() => flash(flashId));
+  } else {
+    const t = document.createElement('input');
+    t.value = url; document.body.appendChild(t); t.select();
+    document.execCommand('copy'); document.body.removeChild(t);
+    flash(flashId);
+  }
+}
+function flash(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 3000);
+}
+
+// ── NATIVE SHARE ────────────────────────────────────────────────────────
+async function nativeShare(title, text, hash) {
+  if (!navigator.share) return;
+  try { await navigator.share({title,text,url:window.location.origin+window.location.pathname+hash}); } catch {}
+}
+</script>
+</body>
+</html>
