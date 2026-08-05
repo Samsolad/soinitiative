@@ -502,6 +502,9 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
 .gate-screen.gate-family::before{
   background:radial-gradient(ellipse at 30% 60%,rgba(74,222,128,0.06) 0%,transparent 55%);
 }
+.gate-screen.gate-business::before{
+  background:radial-gradient(ellipse at 40% 50%,rgba(74,144,217,0.07) 0%,transparent 55%);
+}
 .gate-screen.gate-wedding::before{
   background:radial-gradient(ellipse at 70% 35%,rgba(217,123,138,0.07) 0%,transparent 55%);
 }
@@ -512,6 +515,7 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
   margin-bottom:1.5rem;display:block;
 }
 .gate-screen.gate-family .gate-eyebrow{color:rgba(74,222,128,0.55)}
+.gate-screen.gate-business .gate-eyebrow{color:rgba(74,144,217,0.55)}
 .gate-screen.gate-wedding .gate-eyebrow{color:rgba(217,123,138,0.55)}
 .gate-title{
   font-family:'Playfair Display',serif;
@@ -520,6 +524,7 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
 }
 .gate-title em{font-style:italic;font-weight:400}
 .gate-screen.gate-family .gate-title em{color:var(--green)}
+.gate-screen.gate-business .gate-title em{color:var(--blue)}
 .gate-screen.gate-wedding .gate-title em{color:var(--rose)}
 .gate-lead{
   font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.2vw,22px);
@@ -732,11 +737,11 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
         </li>
         <li class="hiw-step">
           <span class="hiw-step-num">3</span>
-          <div><h3>Vote or Select</h3><p>For So Wedding and So Hero, the community votes. For So Family and So Business, our team selects from verified nominations.</p></div>
+          <div><h3>Vote or Select</h3><p>For So Hero, the community votes. For So Family, our team selects from verified nominations. So Business and So Wedding open soon.</p></div>
         </li>
         <li class="hiw-step">
           <span class="hiw-step-num">4</span>
-          <div><h3>Deliver</h3><p>A meal. A business launch. A funded wedding. A cash award. Real support, delivered to real people.</p></div>
+          <div><h3>Deliver</h3><p>A business marketing campaign launch. A partly / fully funded wedding. A cash award. Real support, delivered to real people.</p></div>
         </li>
         <li class="hiw-step">
           <span class="hiw-step-num lit">5</span>
@@ -765,7 +770,7 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
       <p class="hero-sub">Four programmes. Real people. Anyone from anywhere in the world can nominate a family, a business, a couple, or a deserving person in Africa — and anyone can give.</p>
       <div class="hero-cta-row">
         <button class="btn-p" onclick="showPage('sofamily')">Nominate Someone</button>
-        <button class="btn-s" onclick="showPage('sowedding')">Vote for a Couple</button>
+        <button class="btn-s" onclick="showPage('sohero')">Nominate a Hero</button>
         <button class="btn-give-accent" onclick="openGive('general')">&#9825;&nbsp; Give Now</button>
       </div>
     </div>
@@ -774,7 +779,7 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
   <section class="campaigns-home">
     <div class="campaigns-inner">
       <span class="section-label">Our Programmes</span>
-      <h2 class="section-title">Four ways to give<br>back <em>right now.</em></h2>
+      <h2 class="section-title">Four programmes.<br>Two open <em>now.</em></h2>
       <div class="divider"></div>
       <div class="campaigns-grid">
 
@@ -783,7 +788,7 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
             <p class="c-num">01</p>
             <div class="c-icon">🏠</div>
             <h3 class="c-name">So <em>Family</em></h3>
-            <p class="c-desc">Nominate a family in Africa that needs food support. A local restaurant delivers a full meal to their door as a surprise. The genuine moment is filmed and shared.</p>
+            <p class="c-desc">Nominate a family in Africa that needs support. Selected families receive cash support delivered with care. The genuine moment is filmed and shared.</p>
           </div>
           <div class="c-actions">
             <button class="c-nom" onclick="event.stopPropagation();showPage('sofamily')">Nominate</button>
@@ -796,10 +801,10 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
             <p class="c-num">02</p>
             <div class="c-icon">🏪</div>
             <h3 class="c-name">So <em>Business</em></h3>
-            <p class="c-desc">Nominate a small African business with a great product but no marketing budget. We onboard them free, recruit their first ambassadors, and film the journey to their first sale.</p>
+            <p class="c-desc">Coming soon. Nominate a small African business with a great product but no marketing budget — we will launch their marketing campaign when this programme opens.</p>
           </div>
           <div class="c-actions">
-            <button class="c-nom" onclick="event.stopPropagation();showPage('sobusiness')">Nominate</button>
+            <button class="c-nom" onclick="event.stopPropagation();showPage('sobusiness')">Coming Soon</button>
             <button class="c-give-btn bv" onclick="event.stopPropagation();openGive('business')">&#9825; Give</button>
           </div>
         </div>
@@ -809,10 +814,10 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
             <p class="c-num">03</p>
             <div class="c-icon">&#128141;</div>
             <h3 class="c-name">So <em>Wedding</em></h3>
-            <p class="c-desc">Nominate a couple who deserve their dream wedding but cannot afford it. The community votes. The winner receives up to &#8358;1,000,000 towards their wedding day.</p>
+            <p class="c-desc">Coming soon. Nominate a couple who deserve their dream wedding — the community will vote, and winners will receive partly or fully funded wedding support.</p>
           </div>
           <div class="c-actions">
-            <button class="c-nom" onclick="event.stopPropagation();showPage('sowedding')">Nominate</button>
+            <button class="c-nom" onclick="event.stopPropagation();showPage('sowedding')">Coming Soon</button>
             <button class="c-give-btn rv" onclick="event.stopPropagation();openGive('wedding')">&#9825; Give</button>
           </div>
         </div>
@@ -853,12 +858,12 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
         <div class="step-item">
           <div class="step-dot">3</div>
           <p class="step-title">Vote or Select</p>
-          <p class="step-copy">For So Wedding and So Hero, the community votes. For So Family and So Business, our team selects from verified nominations.</p>
+          <p class="step-copy">For So Hero, the community votes. For So Family, our team selects from verified nominations. So Business and So Wedding open soon.</p>
         </div>
         <div class="step-item">
           <div class="step-dot">4</div>
           <p class="step-title">Deliver</p>
-          <p class="step-copy">A meal. A business launch. A funded wedding. A cash award. Real support, delivered to real people.</p>
+          <p class="step-copy">A business marketing campaign launch. A partly / fully funded wedding. A cash award. Real support, delivered to real people.</p>
         </div>
         <div class="step-item">
           <div class="step-dot lit">5</div>
@@ -898,12 +903,10 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
     <div class="give-band-inner">
       <span class="section-label">Give</span>
       <h2 class="give-band-title">Every contribution<br>changes a <em>life.</em></h2>
-      <p class="give-band-sub">A meal costs less than you think. A business listing changes everything. A wedding is a memory for life. A cash award changes a person's month. Give what you can.</p>
+      <p class="give-band-sub">Cash support for So Family and So Hero is open now. Give what you can — every contribution reaches real people.</p>
       <div class="give-buttons">
         <button class="btn-p" onclick="openGive('general')">&#9825;&nbsp; Give to SoInitiative</button>
         <button class="btn-s" onclick="openGive('family')">Give to So Family</button>
-        <button class="btn-s" onclick="openGive('business')">Give to So Business</button>
-        <button class="btn-s" onclick="openGive('wedding')">Give to So Wedding</button>
         <button class="btn-s" onclick="openGive('hero')">Give to So Hero</button>
       </div>
     </div>
@@ -921,18 +924,18 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
 
 
 <!-- ══════════════════════════════════════
-     COMING SOON GATE (So Family / So Wedding)
+     COMING SOON GATE (So Business / So Wedding)
 ══════════════════════════════════════ -->
 <div class="page" id="page-gate">
-  <div class="gate-screen gate-family" id="gate-screen">
+  <div class="gate-screen gate-business" id="gate-screen">
     <div class="gate-inner">
       <button class="back-btn" onclick="showPage('home')">&#8592; Back to SoInitiative</button>
       <span class="gate-eyebrow" id="gate-eyebrow">Coming Soon</span>
-      <h1 class="gate-title" id="gate-title">So <em>Family</em></h1>
-      <p class="gate-lead" id="gate-lead">We're putting the finishing touches on this programme. Check back soon — or explore So Business and So Hero in the meantime.</p>
+      <h1 class="gate-title" id="gate-title">So <em>Business</em></h1>
+      <p class="gate-lead" id="gate-lead">We're putting the finishing touches on this programme. Check back soon — or explore So Family and So Hero in the meantime.</p>
       <div class="gate-actions">
         <button class="btn-p" type="button" onclick="showPage('home')">Back to Home</button>
-        <button class="btn-s" type="button" id="gate-alt-btn" onclick="showPage('sobusiness')">Explore So Business</button>
+        <button class="btn-s" type="button" id="gate-alt-btn" onclick="showPage('sofamily')">Explore So Family</button>
       </div>
     </div>
     <div class="gate-admin">
@@ -949,9 +952,9 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
   <div class="cp-hero">
     <div class="cp-hero-inner">
       <button class="back-btn" onclick="showPage('home')">&#8592; Back to SoInitiative</button>
-      <span class="cp-eyebrow">Programme 01 &nbsp;·&nbsp; Community Food Support &nbsp;·&nbsp; All of Africa</span>
+      <span class="cp-eyebrow">Programme 01 &nbsp;·&nbsp; Community Cash Support &nbsp;·&nbsp; All of Africa</span>
       <h1 class="cp-title">So <em>Family</em></h1>
-      <p class="cp-tagline">A community-funded programme that surprises families in need across Africa with a full meal — delivered with care, filmed in the moment, shared so the next family gets nominated too.</p>
+      <p class="cp-tagline">A community-funded programme that delivers cash support to families in need across Africa — given with care, filmed in the moment, shared so the next family gets nominated too.</p>
       <div class="cp-hero-btns">
         <button class="btn-p" onclick="document.getElementById('sf-form').scrollIntoView({behavior:'smooth'})">Nominate a Family</button>
         <button class="btn-s" onclick="openGive('family')">&#9825;&nbsp; Give to So Family</button>
@@ -961,9 +964,9 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
   <div class="cp-content">
     <div class="cp-content-inner">
       <span class="section-label">What is So Family?</span>
-      <h2>A meal. A moment.<br><em>A movement.</em></h2>
+      <h2>Cash support.<br><em>Real impact.</em></h2>
       <div class="divider"></div>
-      <p>So Family is a community-powered food programme where <strong>anyone from anywhere nominates a family in Africa that needs support.</strong> A local restaurant partner prepares a full family meal. A verified local coordinator delivers it unannounced. The genuine reaction is filmed and shared.</p>
+      <p>So Family is a community-powered cash support programme where <strong>anyone from anywhere nominates a family in Africa that needs help.</strong> Our team verifies each nomination. Selected families receive cash support delivered with care. The genuine moment is filmed and shared.</p>
       <p>This is not charity. <strong>It is the community deciding who deserves care — and acting on it.</strong> Every delivery proves ordinary people can create extraordinary moments.</p>
       <p><strong>No government money. No NGO gatekeepers.</strong> Just people, giving back.</p>
     </div>
@@ -975,8 +978,8 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
       <div class="divider"></div>
       <div class="cp-step"><div class="cp-step-num">01</div><div><h3>You Nominate</h3><p>Fill in the form below. Tell us who the family is, where they are in Africa, and why they deserve this. You don't need to know them personally.</p></div></div>
       <div class="cp-step"><div class="cp-step-num">02</div><div><h3>We Verify</h3><p>A trusted local coordinator confirms the nomination within 48 hours. The family's privacy is fully protected throughout.</p></div></div>
-      <div class="cp-step"><div class="cp-step-num">03</div><div><h3>We Deliver</h3><p>A local restaurant partner prepares a full family meal. Our coordinator delivers it directly to their home. The family doesn't know it's coming.</p></div></div>
-      <div class="cp-step"><div class="cp-step-num">04</div><div><h3>We Film</h3><p>The moment is filmed naturally, respectfully, and with full consent. No scripts. No staging. A real family, receiving real care.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">03</div><div><h3>We Deliver Cash Support</h3><p>Selected families receive cash support, delivered by our coordinator with care and dignity. The family doesn't always know it's coming.</p></div></div>
+      <div class="cp-step"><div class="cp-step-num">04</div><div><h3>We Film</h3><p>The moment is filmed naturally, respectfully, and with full consent. No scripts. No staging. A real family, receiving real support.</p></div></div>
       <div class="cp-step"><div class="cp-step-num">05</div><div><h3>We Share — And You Share</h3><p>The story goes live on YouTube, Instagram, and TikTok. Download the e-flier below and share it. Every share brings us closer to the next family.</p></div></div>
     </div>
   </div>
@@ -1011,7 +1014,7 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
       <div class="flier-layout">
         <div id="sf-flier" class="flier-card fc-family">
           <div class="f-top"><span class="f-brand">SOINITIATIVE</span><span class="f-num">Programme 01</span></div>
-          <div class="f-mid"><p class="f-eyebrow">Community Food Support · Africa</p><h2 class="f-title">So<br><em>Family</em></h2><p class="f-tagline">Know a family in Africa that deserves a hot meal? Nominate them today. Anyone, anywhere can nominate.</p></div>
+          <div class="f-mid"><p class="f-eyebrow">Community Cash Support · Africa</p><h2 class="f-title">So<br><em>Family</em></h2><p class="f-tagline">Know a family in Africa that needs support? Nominate them today. Selected families receive cash support. Anyone, anywhere can nominate.</p></div>
           <div class="f-bot"><span class="f-cta">Nominate Now &#8599;</span><span class="f-url">soinitiative.org</span></div>
         </div>
         <div class="flier-actions">
@@ -1020,7 +1023,7 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
           <div class="action-stack">
             <button class="btn-action dl" onclick="downloadFlier('sf-flier','SoFamily-SoInitiative')">&#8595;&nbsp; Download Flier (PNG)</button>
             <button class="btn-action sec" onclick="copyLink('sofamily','sf-flash')">&#128279;&nbsp; Copy Campaign Link</button>
-            <button class="btn-action sec sf-native" onclick="nativeShare('So Family — SoInitiative','Nominate a family in Africa for food support.','#sofamily')">&#8599;&nbsp; Share via WhatsApp / More</button>
+            <button class="btn-action sec sf-native" onclick="nativeShare('So Family — SoInitiative','Nominate a family in Africa for cash support.','#sofamily')">&#8599;&nbsp; Share via WhatsApp / More</button>
             <p class="copy-flash" id="sf-flash">&#10003; Link copied!</p>
           </div>
           <div class="share-tips"><strong>WhatsApp:</strong> Save PNG and share in family or community groups.<br><strong>Instagram Stories:</strong> Post the PNG and add the link in your bio.<br><strong>Twitter / X:</strong> Paste the link for a full preview card automatically.</div>
@@ -1443,29 +1446,29 @@ footer{padding:80px 60px;background:var(--off-black);border-top:1px solid var(--
 
 // ── COMING SOON GATE ───────────────────────────────────────────────────
 // Preview gate password is verified server-side via /api/gate (Vercel env: GATE_PASS).
-const GATED_PAGES = ['sofamily', 'sowedding'];
+const GATED_PAGES = ['sobusiness', 'sowedding'];
 const GATE_STORAGE_KEY = 'soinit_gate_unlock';
 
 const gateCopy = {
-  sofamily: {
-    theme: 'gate-family',
-    eyebrow: 'Programme 01 · Coming Soon',
-    title: 'So <em>Family</em>',
-    lead: 'We\'re putting the finishing touches on this programme. Nominations open soon — explore So Business and So Hero in the meantime.',
-    altPage: 'sobusiness',
-    altLabel: 'Explore So Business',
+  sobusiness: {
+    theme: 'gate-business',
+    eyebrow: 'Programme 02 · Coming Soon',
+    title: 'So <em>Business</em>',
+    lead: 'We\'re preparing the nomination and marketing-launch experience. Nominations open soon — explore So Family and So Hero in the meantime.',
+    altPage: 'sofamily',
+    altLabel: 'Explore So Family',
   },
   sowedding: {
     theme: 'gate-wedding',
     eyebrow: 'Programme 03 · Coming Soon',
     title: 'So <em>Wedding</em>',
-    lead: 'We\'re preparing the nomination and voting experience. Check back soon — or explore our other programmes meanwhile.',
+    lead: 'We\'re preparing the nomination and voting experience. Check back soon — or explore So Family and So Hero meanwhile.',
     altPage: 'sohero',
     altLabel: 'Explore So Hero',
   },
 };
 
-let gateTarget = 'sofamily';
+let gateTarget = 'sobusiness';
 
 function isGateUnlocked() {
   return sessionStorage.getItem(GATE_STORAGE_KEY) === '1';
@@ -1481,7 +1484,7 @@ function isGatedPage(p) {
 
 function showGate(p) {
   gateTarget = p;
-  const cfg = gateCopy[p] || gateCopy.sofamily;
+  const cfg = gateCopy[p] || gateCopy.sobusiness;
   const screen = document.getElementById('gate-screen');
   screen.className = 'gate-screen ' + cfg.theme;
   document.getElementById('gate-eyebrow').textContent = cfg.eyebrow;
@@ -1663,10 +1666,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // ── GIVE MODAL ────────────────────────────────────────────────────────
 const giveCfg = {
-  general:  { title:'Give to SoInitiative',  sub:'Support any programme — allocated where most needed' },
-  family:   { title:'Give to So Family',      sub:'Help fund a family meal delivery in Africa' },
-  business: { title:'Give to So Business',    sub:'Help fund a free business spotlight' },
-  wedding:  { title:'Give to So Wedding',     sub:'Help fund a couple\'s dream wedding in Africa' },
+  general:  { title:'Give to SoInitiative',  sub:'Support open programmes — cash for So Family and So Hero' },
+  family:   { title:'Give to So Family',      sub:'Help fund cash support for families in Africa' },
+  business: { title:'Give to So Business',    sub:'Coming soon — support will fund business marketing launches' },
+  wedding:  { title:'Give to So Wedding',     sub:'Coming soon — support will fund partly / fully funded weddings' },
   hero:     { title:'Give to So Hero Award',  sub:'Help fund the ₦200,000 monthly cash gifts' },
 };
 function openGive(c) {
