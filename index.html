@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-F0kuCZV8qeCHFhvHIdC/5Fuxh1FpN0huJVAXVi1wBDZwj2qBOugCvmZ959nrazXX+nO4zLhNpVK2bzoV8DYiDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -1804,13 +1804,32 @@ async function castVote(btn, nomineeName, campaign) {
 // ── FLIER DOWNLOAD ─────────────────────────────────────────────────────
 async function downloadFlier(id, name) {
   const el = document.getElementById(id);
+  if (!el) {
+    alert('Flier not found. Please refresh and try again.');
+    return;
+  }
+  if (typeof html2canvas !== 'function') {
+    alert('Download tool failed to load. Please refresh the page and try again.');
+    return;
+  }
   try {
-    const c = await html2canvas(el, {scale:3,useCORS:true,backgroundColor:null,logging:false});
+    const bg = getComputedStyle(el).backgroundColor || '#111111';
+    const c = await html2canvas(el, {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: bg === 'rgba(0, 0, 0, 0)' ? '#111111' : bg,
+      logging: false,
+    });
     const a = document.createElement('a');
     a.download = name + '.png';
     a.href = c.toDataURL('image/png');
+    a.rel = 'noopener';
+    document.body.appendChild(a);
     a.click();
-  } catch {
+    a.remove();
+  } catch (err) {
+    console.error('downloadFlier', err);
     alert('Could not generate flier. Please try in Chrome or Safari.');
   }
 }
